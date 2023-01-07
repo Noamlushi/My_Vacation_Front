@@ -3,6 +3,8 @@ import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import HeadlineCards from "./components/HeadlineCards";
 import Flights from "./components/Flights";
+import Heroi from "./components/InfoPage/Heroi";
+import ImageSlider from "./components/InfoPage/ImageSlider";
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
       <Hero />
       <HeadlineCards />
       <Flights />
+      <Heroi />
     </div>
   );
 }
