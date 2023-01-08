@@ -38,10 +38,15 @@ const Navbar = () => {
           placeholder="Search Your Next Vacation"
         />
       </div>
-      {/* Cart button */}
-      <button className="bg-blue-600 text-white hidden md:flex items-center py-2 rounded-2xl w-20">
-        <BsFillCartFill size={20} className="ml-2 mr-2" /> Cart
-      </button>
+      <div className=" flex items-center">
+        {/* Cart button */}
+        <button className="bg-stone-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20 mr-2">
+          <span className="mr-2 ml-4 ">lOG IN</span>
+        </button>
+        <button className="bg-blue-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20">
+          <BsFillCartFill size={20} className="ml-2 mr-2" /> Cart
+        </button>
+      </div>
 
       {/* Mobile Menu */}
       {/* Overlay */}
@@ -70,10 +75,12 @@ const Navbar = () => {
         <nav>
           <ul className="flex flex-col p-4 text-gray-800">
             <li className="text-xl py-4 flex">
-              <TbTruckDelivery size={25} className="mr-4" /> Orders
+              <TbTruckDelivery size={25} className="mr-4" />{" "}
+              <a href="/">Home</a>
             </li>
             <li className="text-xl py-4 flex">
-              <MdFavorite size={25} className="mr-4" /> Favorites
+              <MdFavorite size={25} className="mr-4" />{" "}
+              <a href="Heroi">Heroi</a>
             </li>
             <li className="text-xl py-4 flex">
               <FaWallet size={25} className="mr-4" /> Wallet

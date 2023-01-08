@@ -1,19 +1,17 @@
 import React from "react";
 import NavBar from "./components/NavBar";
-import Hero from "./components/Hero";
-import HeadlineCards from "./components/HeadlineCards";
-import Flights from "./components/Flights";
+import Home from "./components/Home/Home";
 import Heroi from "./components/InfoPage/Heroi";
-import ImageSlider from "./components/InfoPage/ImageSlider";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div>
       <NavBar />
-      <Hero />
-      <HeadlineCards />
-      <Flights />
-      <Heroi />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/heroi" element={<Heroi />} />
+      </Routes>
     </div>
   );
 }
