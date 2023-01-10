@@ -4,6 +4,12 @@ import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
 import Heroi from "./components/InfoPage/Heroi";
 import { Routes, Route } from "react-router-dom";
+import Flights from "./components/Home/Flights";
+import Table from "./components/Admin/Table";
+import Login from "./components/LogIn/Login";
+import Signin from "./components/LogIn/Sigin";
+
+// import Footer from "./components/Fotter";
 
 function App() {
   return (
@@ -12,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/heroi" element={<Heroi />} />
+        <Route path="flights" element={<Flights />} />
+        <Route path="table" element={<Table />} />
       </Routes>
       <Cart />
     </div>

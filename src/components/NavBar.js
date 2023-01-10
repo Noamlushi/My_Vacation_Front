@@ -6,9 +6,8 @@ import {
   AiFillTag,
 } from "react-icons/ai";
 import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
-import { TbTruckDelivery } from "react-icons/tb";
-import { FaUserFriends, FaWallet } from "react-icons/fa";
-import { MdFavorite, MdHelp } from "react-icons/md";
+import { FaUserFriends, FaHome, FaInfo } from "react-icons/fa";
+import { MdHelp, MdAirplaneTicket } from "react-icons/md";
 import Cart from "./Cart/Cart";
 
 const Navbar = () => {
@@ -66,8 +65,8 @@ const Navbar = () => {
       <div
         className={
           nav
-            ? "fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300"
-            : "fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300"
+            ? "fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300 "
+            : "fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300 "
         }
       >
         <AiOutlineClose
@@ -78,21 +77,20 @@ const Navbar = () => {
         <h2 className="text-2xl p-4 text-stone-700">
           My<span className="font-bold text-blue-600">Vacation</span>
         </h2>
-        <nav>
-          <ul className="flex flex-col p-4 text-gray-800">
+        <nav className=" ">
+          <ul className="flex flex-col p-4 text-gray-800 ">
             <li className="text-xl py-4 flex">
-              <TbTruckDelivery size={25} className="mr-4" />{" "}
-              <a href="/">Home</a>
+              <FaHome size={25} className="mr-4" /> <a href="/">Home</a>
             </li>
             <li className="text-xl py-4 flex">
-              <MdFavorite size={25} className="mr-4" />{" "}
-              <a href="Heroi">Heroi</a>
+              <FaInfo size={25} className="mr-4" /> <a href="Heroi">Heroi</a>
             </li>
             <li className="text-xl py-4 flex">
-              <FaWallet size={25} className="mr-4" /> Wallet
+              <MdAirplaneTicket size={25} className="mr-4" />{" "}
+              <a href="Flights">Flights</a>
             </li>
             <li className="text-xl py-4 flex">
-              <MdHelp size={25} className="mr-4" /> Help
+              <MdHelp size={25} className="mr-4" /> <a href="Table">Table</a>
             </li>
             <li className="text-xl py-4 flex">
               <AiFillTag size={25} className="mr-4" /> Promotions
@@ -109,20 +107,20 @@ const Navbar = () => {
       <div
         className={
           cart
-            ? "fixed top-0 right-0 w-[450px] h-full bg-white z-10 duration-300"
+            ? "fixed top-0 right-0 w-[450px] h-full bg-white z-10 duration-300 "
             : "fixed top-0 left-[-100%] w-[300px] h-full bg-white z-10 duration-300"
         }
       >
         <AiOutlineClose
           onClick={() => setCart(!cart)}
           size={30}
-          className="absolute right-4 top-4 cursor-pointer"
+          className=" absolute right-4 top-4 cursor-pointer"
         />
         <h2 className="text-2xl p-4 text-stone-700">
           My<span className="font-bold text-blue-600">Cart</span>
         </h2>
-        <nav>
-          <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
+        <nav className="">
+          <div className="flex flex-col max-w-3xl p-6  sm:p-10">
             <ul className="flex flex-col divide-y divide-gray-700">
               <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
                 <div className="flex w-full space-x-2 sm:space-x-4">
@@ -181,6 +179,7 @@ const Navbar = () => {
                   </div>
                 </div>
               </li>
+
               <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
                 <div className="flex w-full space-x-2 sm:space-x-4">
                   <img
