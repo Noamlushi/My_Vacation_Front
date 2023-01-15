@@ -212,3 +212,33 @@ export const UserData = [
     userLost: 234,
   },
 ];
+
+
+// const [flights, setFlights] = useState([]);
+
+// useEffect(() => {
+//    fetch('http://localhost:8000/flight')
+//       .then((res) => res.json())
+//       .then((data) => {
+//          console.log(data);
+//          setFlights(data);
+//       })
+//       .catch((err) => {
+//          console.log(err.message);
+//       });
+// }, []);
+
+// return (
+//  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+//  {flights.map((item, index) => (
+//    <div
+//      key={index}
+//      className="border shadow-lg rounded-lg hover:scale-105 duration-300"
+//    >
+//    <div>
+//      <h1>{item.Name}</h1>
+//    </div>
+//    </div>
+//  ))}
+// </div>
+// );
