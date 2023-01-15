@@ -24,6 +24,7 @@ function App() {
         <Route path="table" element={<Table />} />
         <Route path="login" element={<Login />} />
         <Route path="signin" element={<Signin />} />
+        <Route path="useredit" element={<UserEdit />} />
       </Routes>
     </div>
   );
