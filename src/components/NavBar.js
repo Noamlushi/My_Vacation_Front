@@ -42,7 +42,9 @@ const Navbar = () => {
       <div className=" flex items-center">
         {/* Cart button */}
         <button className="bg-stone-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20 mr-2">
-          <span className="mr-2 ml-4 ">LOG IN</span>
+          <span className="mr-2 ml-4 ">
+            <a href="login">Log In</a>
+          </span>
         </button>
         <button
           className="bg-blue-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20"
