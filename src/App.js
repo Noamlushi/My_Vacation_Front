@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./components/NavBar";
+import { useState,useEffect } from "react";
 // import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
 import Heroi from "./components/InfoPage/Heroi";
@@ -14,13 +15,29 @@ import UserEdit from "./components/Admin/UserEdit";
 // import Footer from "./components/Fotter";
 
 function App() {
+
+  const [foods, setFoods] = useState([]);
+  //  const [flights, setFlights] = useState([]);
+  
+  useEffect(() => {
+     fetch('http://localhost:8000/flight')
+        .then((res) => res.json())
+        .then((data) => {
+          //  console.log(data);
+           setFoods(data);
+        })
+        .catch((err) => {
+           console.log(err.message);
+        });
+  }, []);
+
   return (
     <div>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/heroi" element={<Heroi />} />
-        <Route path="flights" element={<Flights />} />
+        <Route path="flights" element={<Flights data={foods} />} />
         <Route path="table" element={<Table />} />
         <Route path="login" element={<Login />} />
         <Route path="signin" element={<Signin />} />

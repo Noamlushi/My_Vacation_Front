@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { data } from "../../data/data.js";
+import React, {useState,} from "react";
 
-const Flights = () => {
+
+const Flights = (props) => {
   //   console.log(data);
+  const data=props.data
   const [foods, setFoods] = useState(data);
+  console.log(foods)
 
   //   Filter Type burgers/pizza/etc
   const filterType = (category) => {
@@ -14,7 +16,7 @@ const Flights = () => {
     );
   };
 
-  //   Filter by price
+  //Filter by price
   const filterPrice = (price) => {
     setFoods(
       data.filter((item) => {
@@ -22,6 +24,7 @@ const Flights = () => {
       })
     );
   };
+
 
   return (
     <div className="max-w-[1640px] m-auto px-4 py-12">
@@ -49,13 +52,13 @@ const Flights = () => {
               Asia
             </button>
             <button
-              onClick={() => filterType("North Ameria")}
+              onClick={() => filterType("North America")}
               className="m-1 border-stone-700 text-blue-600  hover:text-stone-700"
             >
               North Ameria
             </button>
             <button
-              onClick={() => filterType("South Amercia")}
+              onClick={() => filterType("South America")}
               className="m-1 border-stone-700 text-blue-600  hover:text-stone-700"
             >
               South Amercia
