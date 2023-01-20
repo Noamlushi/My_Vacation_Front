@@ -1,29 +1,35 @@
-import React, {useState,} from "react";
+import React, { useState, useEffect } from 'react';
 
 
 const Flights = (props) => {
   //   console.log(data);
-  const data=props.data
-  const [foods, setFoods] = useState(data);
-  console.log(foods)
+  // const [data, setData] = useState([]);
+  const [filterdata, setFilterData] = useState([]);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/flight')
+      .then(response => response.json())
+      .then(data =>{
+        setFilterData(data)
+        setData(data)})
+  }, []);
+
 
   //   Filter Type burgers/pizza/etc
-  const filterType = (category) => {
-    setFoods(
-      data.filter((item) => {
+  const filterType = (category) => {  
+       console.log(data)
+       setFilterData(data.filter((item) => {
         return item.category === category;
-      })
-    );
-  };
+      }))}
+    
 
   //Filter by price
   const filterPrice = (price) => {
-    setFoods(
-      data.filter((item) => {
-        return item.price === price;
-      })
-    );
-  };
+    setFilterData(data.filter((item) => {
+            return item.price === price;
+        }))}
+ 
 
 
   return (
@@ -40,7 +46,7 @@ const Flights = (props) => {
           <p className="font-bold text-stone-700">Filter Type</p>
           <div className="flex justfiy-between flex-wrap">
             <button
-              onClick={() => setFoods(data)}
+              onClick={() => setFilterData(data)}
               className="m-1    font-bold border-blue-600 text-stone-700  hover:text-blue-600"
             >
               All
@@ -106,7 +112,7 @@ const Flights = (props) => {
 
       {/* Display foods */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
-        {foods.map((item, index) => (
+        {filterdata.map((item, index) => (
           <div
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
