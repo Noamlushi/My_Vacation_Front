@@ -9,10 +9,13 @@ import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
 import { FaUserFriends, FaHome, FaInfo } from "react-icons/fa";
 import { MdHelp, MdAirplaneTicket } from "react-icons/md";
 import Cart from "./Cart/Cart";
+import {Link} from 'react-router-dom'
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [cart, setCart] = useState(false);
+
+ 
 
   return (
     <div className="max-w mx-auto flex justify-between items-center p-4">
@@ -81,18 +84,18 @@ const Navbar = () => {
         </h2>
         <nav className=" ">
           <ul className="flex flex-col p-4 text-gray-800 ">
-            <li className="text-xl py-4 flex">
-              <FaHome size={25} className="mr-4" /> <a href="/">Home</a>
+            <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
+              <FaHome size={25} className="mr-4" /> <Link to="/">Home</Link>
             </li>
-            <li className="text-xl py-4 flex">
-              <FaInfo size={25} className="mr-4" /> <a href="Heroi">Heroi</a>
+            <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
+              <FaInfo size={25} className="mr-4" /> <Link to="/heroi">Heroi</Link>
             </li>
-            <li className="text-xl py-4 flex">
+            <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
               <MdAirplaneTicket size={25} className="mr-4" />{" "}
-              <a href="Flights">Flights</a>
+              <Link to="/flights">Flights</Link>
             </li>
-            <li className="text-xl py-4 flex">
-              <MdHelp size={25} className="mr-4" /> <a href="Table">Table</a>
+            <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
+              <MdHelp size={25} className="mr-4" /> <Link to="/table">Table</Link>
             </li>
             <li className="text-xl py-4 flex">
               <AiFillTag size={25} className="mr-4" /> Promotions

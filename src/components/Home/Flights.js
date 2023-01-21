@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
+import {Link,useNavigate} from 'react-router-dom'
 
 const Flights = (props) => {
   //   console.log(data);
   // const [data, setData] = useState([]);
   const [filterdata, setFilterData] = useState([]);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:8000/flight')
@@ -29,6 +30,10 @@ const Flights = (props) => {
     setFilterData(data.filter((item) => {
             return item.price === price;
         }))}
+
+  const handleClick = (id)=>{
+    console.log(id)
+  }
  
 
 
@@ -111,9 +116,9 @@ const Flights = (props) => {
       </div>
 
       {/* Display foods */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 cursor-pointer">
         {filterdata.map((item, index) => (
-          <div
+          <div onClick={() => navigate('/heroi/'+item._id)}
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
           >

@@ -1,13 +1,25 @@
-import React from "react";
 import ImageSlider from "./ImageSlider";
+import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 
 const Heroi = () => {
+const params = useParams();
+const [flightdata, setFlighData] = useState({});
+
+useEffect(() => {
+  fetch('http://localhost:8000/flight/'+params.id)
+    .then(response => response.json())
+    .then(data =>{
+      setFlighData(data)})
+}, []);
+
+
   return (
     <div>
       <div className="w-full h-full">
         <img
           className="top-0 left-0 w-full h-96 object-cover"
-          src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg"
+          src={flightdata.image}
           alt="/"
         />
         <div className="bg-stone-700 absolute  left-0 w-full  h-full" />
@@ -16,9 +28,10 @@ const Heroi = () => {
           <div className="md:left-[10%] max-w-[1100px] m-auto absolute p-4">
             <p>Sunbathing</p>
             <h1 className="font-bold text-5xl md:text-7xl drop-shadow-2xl">
-              <span className="text-blue-600 text-8xl">T</span>he Maldives{" "}
+              <span className="text-blue-600 text-8xl">T</span>he {flightdata.name}{" "}
             </h1>
             <p className="max-w-[900px] drop-shadow-2xl py-2 text-xl">
+              {flightdata.info}
               The Maldives is the ultimate paradise destination, the one we all
               dream of visiting. Renowned for its spectacular beaches and
               luxurious hotels, it’s a bucket list destination for a reason. In
