@@ -9,6 +9,7 @@ import Table from "./components/Admin/Table";
 import Login from "./components/LogIn/Login";
 import Signin from "./components/LogIn/Sigin";
 import UserEdit from "./components/Admin/UserEdit";
+import AuthForm from "./components/AuthForm";
 // import Graph from "./components/Admin/Graph";
 
 // import Footer from "./components/Fotter";
@@ -21,11 +22,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/heroi" element={<Heroi />} />
         <Route path="/heroi/:id" element={<Heroi />} />
-        <Route path="flights" element={<Flights/>} />
+        <Route path="flights" element={<Flights />} />
         <Route path="table" element={<Table />} />
         <Route path="login" element={<Login />} />
-        <Route path="signin" element={<Signin />} />
+        <Route path="login/signin" element={<Signin />} />
         <Route path="useredit" element={<UserEdit />} />
+        <Route path="authform" element={<AuthForm />} />
       </Routes>
     </div>
   );

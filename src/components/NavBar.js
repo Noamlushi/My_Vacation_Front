@@ -9,13 +9,12 @@ import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
 import { FaUserFriends, FaHome, FaInfo } from "react-icons/fa";
 import { MdHelp, MdAirplaneTicket } from "react-icons/md";
 import Cart from "./Cart/Cart";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import CartItem from "./Cart/CartItem";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [cart, setCart] = useState(false);
-
- 
 
   return (
     <div className="max-w mx-auto flex justify-between items-center p-4">
@@ -46,7 +45,7 @@ const Navbar = () => {
         {/* Cart button */}
         <button className="bg-stone-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20 mr-2">
           <span className="mr-2 ml-4 ">
-            <a href="login">Log In</a>
+            <Link to="authform">Log In</Link>
           </span>
         </button>
         <button
@@ -88,14 +87,16 @@ const Navbar = () => {
               <FaHome size={25} className="mr-4" /> <Link to="/">Home</Link>
             </li>
             <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
-              <FaInfo size={25} className="mr-4" /> <Link to="/heroi">Heroi</Link>
+              <FaInfo size={25} className="mr-4" />{" "}
+              <Link to="/heroi">Heroi</Link>
             </li>
             <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
               <MdAirplaneTicket size={25} className="mr-4" />{" "}
               <Link to="/flights">Flights</Link>
             </li>
             <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
-              <MdHelp size={25} className="mr-4" /> <Link to="/table">Table</Link>
+              <MdHelp size={25} className="mr-4" />{" "}
+              <Link to="/table">Table</Link>
             </li>
             <li className="text-xl py-4 flex">
               <AiFillTag size={25} className="mr-4" /> Promotions
@@ -127,7 +128,9 @@ const Navbar = () => {
         <nav className="">
           <div className="flex flex-col max-w-3xl p-6  sm:p-10">
             <ul className="flex flex-col divide-y divide-gray-700">
-              <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
+              <CartItem />
+              <CartItem />
+              {/* <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
                 <div className="flex w-full space-x-2 sm:space-x-4">
                   <img
                     className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500"
@@ -183,7 +186,7 @@ const Navbar = () => {
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> */}
 
               <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
                 <div className="flex w-full space-x-2 sm:space-x-4">

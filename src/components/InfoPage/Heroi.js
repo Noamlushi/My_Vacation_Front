@@ -26,7 +26,7 @@ useEffect(() => {
         <div className=" w-full h-full absolute  flex-col justify-center text-white">
           {" "}
           <div className="md:left-[10%] max-w-[1100px] m-auto absolute p-4">
-            <p>Sunbathing</p>
+            <p>{flightdata.category}</p>
             <h1 className="font-bold text-5xl md:text-7xl drop-shadow-2xl">
               <span className="text-blue-600 text-8xl">T</span>he {flightdata.name}{" "}
             </h1>

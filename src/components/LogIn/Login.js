@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function Login() {
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
@@ -46,7 +46,7 @@ export default function Login() {
           {" "}
           Don't have an account?{" "}
           <a href="#" className="font-medium text-blue-600 hover:underline">
-            <a href="signin">Sign Up</a>
+            <Link to="signin">Sign Up</Link>
           </a>
         </p>
       </div>
