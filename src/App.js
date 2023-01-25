@@ -10,6 +10,7 @@ import Login from "./components/LogIn/Login";
 import Signin from "./components/LogIn/Sigin";
 import UserEdit from "./components/Admin/UserEdit";
 import AuthForm from "./components/AuthForm";
+import AdminPage from "./components/Admin/AdminPage";
 // import Graph from "./components/Admin/Graph";
 
 // import Footer from "./components/Fotter";
@@ -29,6 +30,7 @@ function App() {
         <Route path="useredit" element={<UserEdit />} />
         <Route path="authform" element={<AuthForm />} />
       </Routes>
+      {/* <AdminPage /> */}
     </div>
   );
 }
