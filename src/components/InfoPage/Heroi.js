@@ -1,24 +1,24 @@
 import ImageSlider from "./ImageSlider";
 import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Heroi = () => {
-const params = useParams();
-const [flightdata, setFlighData] = useState({});
+  const params = useParams();
+  const [flightdata, setFlighData] = useState({});
 
-useEffect(() => {
-  fetch('http://localhost:8000/flight/'+params.id)
-    .then(response => response.json())
-    .then(data =>{
-      setFlighData(data)})
-}, []);
-
+  useEffect(() => {
+    fetch("http://localhost:8000/flight/" + params.id)
+      .then((response) => response.json())
+      .then((data) => {
+        setFlighData(data);
+      });
+  }, []);
 
   return (
     <div>
       <div className="w-full h-full">
         <img
-          className="top-0 left-0 w-full h-96 object-cover"
+          className="top-0 left-0 w-full h-96 object-center"
           src={flightdata.image}
           alt="/"
         />
@@ -28,7 +28,8 @@ useEffect(() => {
           <div className="md:left-[10%] max-w-[1100px] m-auto absolute p-4">
             <p>{flightdata.category}</p>
             <h1 className="font-bold text-5xl md:text-7xl drop-shadow-2xl">
-              <span className="text-blue-600 text-8xl">T</span>he {flightdata.name}{" "}
+              <span className="text-blue-600 text-8xl">T</span>he{" "}
+              {flightdata.name}{" "}
             </h1>
             <p className="max-w-[900px] drop-shadow-2xl py-2 text-xl">
               {flightdata.info}
