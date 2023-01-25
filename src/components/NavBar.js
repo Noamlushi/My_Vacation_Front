@@ -6,7 +6,7 @@ import {
   AiFillTag,
 } from "react-icons/ai";
 import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
-import { FaUserFriends, FaHome, FaInfo } from "react-icons/fa";
+import { FaUserFriends, FaHome, FaInfo, FaCloudSun } from "react-icons/fa";
 import { MdHelp, MdAirplaneTicket } from "react-icons/md";
 import Cart from "./Cart/Cart";
 import { Link } from "react-router-dom";
@@ -99,7 +99,7 @@ const Navbar = () => {
               <Link to="/table">Table</Link>
             </li>
             <li className="text-xl py-4 flex">
-              <AiFillTag size={25} className="mr-4" /> Promotions
+              <FaCloudSun size={25} className="mr-4" /> Weather
             </li>
             <li className="text-xl py-4 flex">
               <BsFillSaveFill size={25} className="mr-4" /> Best Ones
