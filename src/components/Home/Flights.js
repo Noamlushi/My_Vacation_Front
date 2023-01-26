@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import {Link,useNavigate} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 const Flights = (props) => {
   //   console.log(data);
@@ -9,33 +10,36 @@ const Flights = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8000/flight')
-      .then(response => response.json())
-      .then(data =>{
-        setFilterData(data)
-        setData(data)})
+    fetch("http://localhost:8000/flight")
+      .then((response) => response.json())
+      .then((data) => {
+        setFilterData(data);
+        setData(data);
+      });
   }, []);
 
-
   //   Filter Type burgers/pizza/etc
-  const filterType = (category) => {  
-       console.log(data)
-       setFilterData(data.filter((item) => {
+  const filterType = (category) => {
+    console.log(data);
+    setFilterData(
+      data.filter((item) => {
         return item.category === category;
-      }))}
-    
+      })
+    );
+  };
 
   //Filter by price
   const filterPrice = (price) => {
-    setFilterData(data.filter((item) => {
-            return item.price === price;
-        }))}
+    setFilterData(
+      data.filter((item) => {
+        return item.price === price;
+      })
+    );
+  };
 
-  const handleClick = (id)=>{
-    console.log(id)
-  }
- 
-
+  const handleClick = (id) => {
+    console.log(id);
+  };
 
   return (
     <div className="max-w-[1640px] m-auto px-4 py-12">
@@ -118,7 +122,8 @@ const Flights = (props) => {
       {/* Display foods */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 cursor-pointer">
         {filterdata.map((item, index) => (
-          <div onClick={() => navigate('/heroi/'+item._id)}
+          <div
+            onClick={() => navigate("/heroi/" + item._id)}
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
           >
@@ -128,12 +133,21 @@ const Flights = (props) => {
               className="w-full h-[200px] object-cover rounded-t-lg"
             />
             <div className="flex justify-between px-2 py-4">
-              <p className="font-bold">{item.name}</p>
+              <p className="text-2lg">{item.name}</p>
+
               <p>
-                <span className="bg-blue-500 text-white p-1 rounded-full">
+                <span className="text-lg bg-blue-500 text-white p-1 rounded-full">
                   {item.price}
                 </span>
               </p>
+              {/* <p className="text-lg text-red p-1 rounded-full">
+                <a href="#" className="text-red-600 hover:text-red-900">
+                  <AiFillDelete size={30} className="text=red" />
+                </a>
+                <a href="#" className="text-blue-600 hover:text-red-900">
+                  <AiFillEdit size={30} className="text=red" />
+                </a>
+              </p> */}
             </div>
           </div>
         ))}

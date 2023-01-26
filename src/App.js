@@ -9,7 +9,7 @@ import Table from "./components/Admin/Table";
 import Login from "./components/LogIn/Login";
 import Signup from "./components/LogIn/Signup";
 import UserEdit from "./components/Admin/UserEdit";
-import Weather from "./components/Weather/Weather"
+import Weather from "./components/Weather/Weather";
 import AdminPage from "./components/Admin/AdminPage";
 import { AuthContextProvider } from "./contexts/AuthContext";
 // import Graph from "./components/Admin/Graph";
