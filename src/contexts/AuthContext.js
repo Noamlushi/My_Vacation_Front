@@ -1,62 +1,46 @@
-import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
+import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
+import { auth } from '../firebase';
 
-const AuthContext = React.createContext();
+const UserContext = createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const AuthContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
 
-export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-  function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
-  }
+   const signIn = (email, password) =>  {
+    return signInWithEmailAndPassword(auth, email, password)
+   }
 
-  function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
-  }
-
-  function logout() {
-    return auth.signOut();
-  }
-
-  function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email);
-  }
-
-  function updateEmail(email) {
-    return currentUser.updateEmail(email);
-  }
-
-  function updatePassword(password) {
-    return currentUser.updatePassword(password);
+  const logout = () => {
+      return signOut(auth)
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser);
+      setUser(currentUser);
     });
-
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  const value = {
-    currentUser,
-    login,
-    signup,
-    logout,
-    resetPassword,
-    updateEmail,
-    updatePassword,
-  };
-
   return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
+    <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+      {children}
+    </UserContext.Provider>
   );
-}
+};
+
+export const UserAuth = () => {
+  return useContext(UserContext);
+};

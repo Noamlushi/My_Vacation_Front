@@ -9,8 +9,9 @@ import Table from "./components/Admin/Table";
 import Login from "./components/LogIn/Login";
 import Signup from "./components/LogIn/Signup";
 import UserEdit from "./components/Admin/UserEdit";
-import AuthForm from "./components/AuthForm";
+import Weather from "./components/Weather/Weather"
 import AdminPage from "./components/Admin/AdminPage";
+import { AuthContextProvider } from "./contexts/AuthContext";
 // import Graph from "./components/Admin/Graph";
 
 // import Footer from "./components/Fotter";
@@ -18,18 +19,20 @@ import AdminPage from "./components/Admin/AdminPage";
 function App() {
   return (
     <div>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/heroi" element={<Heroi />} />
-        <Route path="/heroi/:id" element={<Heroi />} />
-        <Route path="flights" element={<Flights />} />
-        <Route path="table" element={<Table />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="useredit" element={<UserEdit />} />
-        {/* <Route path="authform" element={<AuthForm />} /> */}
-      </Routes>
+      <AuthContextProvider>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/heroi" element={<Heroi />} />
+          <Route path="/heroi/:id" element={<Heroi />} />
+          <Route path="flights" element={<Flights />} />
+          <Route path="/table" element={<Table />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="useredit" element={<UserEdit />} />
+          <Route path="/weather" element={<Weather />} />
+        </Routes>
+      </AuthContextProvider>
       {/* <AdminPage /> */}
     </div>
   );

@@ -9,12 +9,25 @@ import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
 import { FaUserFriends, FaHome, FaInfo, FaCloudSun } from "react-icons/fa";
 import { MdHelp, MdAirplaneTicket } from "react-icons/md";
 import Cart from "./Cart/Cart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartItem from "./Cart/CartItem";
+import { UserAuth } from "../contexts/AuthContext";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [cart, setCart] = useState(false);
+  const { logout, user } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+      console.log("You are logged out");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
   return (
     <div className="max-w mx-auto flex justify-between items-center p-4">
@@ -42,12 +55,21 @@ const Navbar = () => {
         />
       </div>
       <div className=" flex items-center">
-        {/* Cart button */}
-        <button className="bg-stone-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20 mr-2">
-          <span className="mr-2 ml-4 ">
-            <Link to="authform">Log In</Link>
-          </span>
-        </button>
+        {!user ? (
+          <button className="bg-stone-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20 mr-2">
+            <span className="mr-2 ml-4 ">
+              <Link to="login">Log In</Link>
+            </span>
+          </button>
+        ) : (
+          <button
+            className="bg-red-600 text-white hidden md:flex items-right py-2 rounded-2xl w-30 mr-2"
+            onClick={handleLogout}
+          >
+            <span className="mr-2 ml-2 ">Log Out</span>
+          </button>
+        )}
+
         <button
           className="bg-blue-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20"
           onClick={() => setCart(!cart)}
@@ -98,8 +120,9 @@ const Navbar = () => {
               <MdHelp size={25} className="mr-4" />{" "}
               <Link to="/table">Table</Link>
             </li>
-            <li className="text-xl py-4 flex">
-              <FaCloudSun size={25} className="mr-4" /> Weather
+            <li className="text-xl py-4 flex" onClick={() => setNav(!nav)}>
+              <FaCloudSun size={25} className="mr-4" />
+              <Link to="/weather">Weather </Link>
             </li>
             <li className="text-xl py-4 flex">
               <BsFillSaveFill size={25} className="mr-4" /> Best Ones
