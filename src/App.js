@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import Flights from "./components/Home/Flights";
 import Table from "./components/Admin/Table";
 import Login from "./components/LogIn/Login";
-import Signin from "./components/LogIn/Sigin";
+import Signup from "./components/LogIn/Signup";
 import UserEdit from "./components/Admin/UserEdit";
 import AuthForm from "./components/AuthForm";
 import AdminPage from "./components/Admin/AdminPage";
@@ -26,9 +26,9 @@ function App() {
         <Route path="flights" element={<Flights />} />
         <Route path="table" element={<Table />} />
         <Route path="login" element={<Login />} />
-        <Route path="login/signin" element={<Signin />} />
+        <Route path="signup" element={<Signup />} />
         <Route path="useredit" element={<UserEdit />} />
-        <Route path="authform" element={<AuthForm />} />
+        {/* <Route path="authform" element={<AuthForm />} /> */}
       </Routes>
       {/* <AdminPage /> */}
     </div>

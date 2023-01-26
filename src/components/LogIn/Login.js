@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
+  const navigate = useNavigate();
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
@@ -32,9 +33,7 @@ export default function Login() {
               className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:blue-purple-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
-          <a href="#" className="text-xs text-blue-600 hover:underline">
-            Forget Password?
-          </a>
+
           <div className="mt-6">
             <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
               Login
@@ -45,9 +44,14 @@ export default function Login() {
         <p className="mt-8 text-xs font-light text-center text-gray-700">
           {" "}
           Don't have an account?{" "}
-          <a href="#" className="font-medium text-blue-600 hover:underline">
-            <Link to="signin">Sign Up</Link>
-          </a>
+          <div
+            className="font-medium text-blue-600 hover:underline cursor-pointer"
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
+            Sign Up
+          </div>
         </p>
       </div>
     </div>
