@@ -123,7 +123,9 @@ const Flights = (props) => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 cursor-pointer">
         {filterdata.map((item, index) => (
           <div
-            onClick={() => navigate("/heroi/" + item._id)}
+            onClick={() =>
+              navigate("/heroi/" + item._id, { state: { dates: item.dates } })
+            }
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
           >

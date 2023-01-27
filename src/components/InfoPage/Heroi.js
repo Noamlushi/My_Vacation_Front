@@ -1,15 +1,19 @@
 import ImageSlider from "./ImageSlider";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 const Heroi = () => {
   const params = useParams();
   const [flightdata, setFlighData] = useState({});
+  const location = useLocation();
+
+  //dates
 
   useEffect(() => {
     fetch("http://localhost:8000/flight/" + params.id)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setFlighData(data);
       });
   }, []);
@@ -55,6 +59,34 @@ const Heroi = () => {
               <li>Alimatha Island</li>
               <li>Alimatha Island</li>
             </ul>
+            {/* */}
+            {/* {location.state.userId} */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 pt-4 cursor-pointer">
+              {location.state.dates.map((item, index) => (
+                <div
+                  // onClick={() => navigate("/heroi/" + item._id)}
+                  key={index}
+                  className="border shadow-lg rounded-lg hover:scale-105 duration-300 w-70"
+                >
+                  <img
+                    src={flightdata.image}
+                    alt={flightdata.name}
+                    className="w-full h-[200px] object-cover rounded-t-lg"
+                  />
+                  <div className="flex justify-between px-2 py-4">
+                    <p className="text-2lg text-black">{flightdata.name}</p>
+                    <p className="text-2lg text-black">{item.date}</p>
+
+                    <p>
+                      <span className="text-lg bg-blue-500 text-white p-1 rounded-full">
+                        {item.price + "$"}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* */}
           </div>
         </div>
       </div>
