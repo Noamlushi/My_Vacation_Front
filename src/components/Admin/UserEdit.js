@@ -1,87 +1,122 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import UserList from "./UserList";
 import { getUserByUid } from "../../firebase";
+import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
 
 export default function UserEdit() {
-  return <button>Click me</button>;
-}
-// <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-//   <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
-//     <h1 className="text-3xl font-semibold text-center text-blue-700 underline">
-//       Edit{" "}
-//     </h1>
-//     <form className="mt-6">
-//       <div className="mb-2">
-//         <label
-//           for="text"
-//           className="block text-sm font-semibold text-gray-800"
-//         >
-//           First Name
-//         </label>
-//         <input
-//           type="text"
-//           className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//         />
-//       </div>
-//       <div className="mb-2">
-//         <label
-//           for="text"
-//           className="block text-sm font-semibold text-gray-800"
-//         >
-//           Last Name
-//         </label>
-//         <input
-//           type="text"
-//           className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//         />
-//       </div>
+  const [data, setData] = useState([]);
 
-//       <div className="mb-2">
-//         <label
-//           for="email"
-//           className="block text-sm font-semibold text-gray-800"
-//         >
-//           Email
-//         </label>
-//         <input
-//           type="email"
-//           className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//         />
-//       </div>
-//       <div className="mb-2">
-//         <label
-//           for="password"
-//           className="block text-sm font-semibold text-gray-800"
-//         >
-//           Password
-//         </label>
-//         <input
-//           type="password"
-//           className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:blue-purple-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//         />
-//       </div>
-//       <div className="mb-2">
-//         <label
-//           for="permission"
-//           className="block text-sm font-semibold text-gray-800"
-//         >
-//           permission{" "}
-//         </label>
-//         <select
-//           id="countries"
-//           className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:blue-purple-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-//         >
-//           <option selected>Choose a permission</option>
-//           <option value="admin">Admin</option>
-//           <option value="client">Client</option>
-//         </select>
-//       </div>
-//       <div className="mt-6">
-//         <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-//           Save{" "}
-//         </button>
-//       </div>
-//     </form>
-//   </div>
-// </div>
+  useEffect(() => {
+    fetch("http://localhost:8000/allUsers")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
+
+  // return data.map((userdata, index) => userdata.user.user.email);
+  return (
+    <div>
+      <div className="flex flex-col">
+        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Name
+                    </th>
+                    {/* <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Title
+                  </th> */}
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      PERMISSION
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Role
+                    </th>
+                    <th scope="col" className="relative px-6 py-3">
+                      <span className="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {data.map((user) => (
+                    <tr key={user._id}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0 h-10 w-10">
+                            <img
+                              className="h-10 w-10 rounded-full"
+                              src="https://cdn-icons-png.flaticon.com/512/6386/6386976.png"
+                              alt=""
+                            />
+                          </div>
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">
+                              {user.name}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {user.email}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      {/* <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">
+                        {person.title}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {person.department}
+                      </div>
+                    </td> */}
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span
+                          className="px-2 inline-flex text-xs leading-5
+                    font-semibold rounded-full bg-green-100 text-green-800"
+                        >
+                          Admin
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {user.role}
+                      </td>
+                      <td className="px-1 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a
+                          className="text-indigo-600 hover:text-indigo-900"
+                          href="UserEdit"
+                        >
+                          Edit
+                          {/* <a href="UserEdit">Edit</a> */}
+                        </a>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a href="#" className="text-red-600 hover:text-red-900">
+                          <FaTrashAlt size={15} className="" />
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
