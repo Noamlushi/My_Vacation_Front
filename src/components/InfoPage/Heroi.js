@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 const Heroi = () => {
   const params = useParams();
   const [flightdata, setFlighData] = useState({});
-  const location = useLocation();
+  // const location = useLocation();
 
   //dates
 
@@ -35,6 +35,13 @@ const Heroi = () => {
               <span className="text-blue-600 text-8xl">T</span>he{" "}
               {flightdata.name}{" "}
             </h1>
+            <br></br>
+            <h2>Flight Details:</h2>
+            <h2>Date: {flightdata.date}</h2>
+            <h2>Boarding: {flightdata.boarding}</h2>
+            <h2>Landing: {flightdata.landing}</h2>
+            <h2>Price : {flightdata.priceTicket + "$"}</h2>
+            <br></br>
             <p className="max-w-[900px] drop-shadow-2xl py-2 text-xl">
               {flightdata.info}
               The Maldives is the ultimate paradise destination, the one we all
@@ -61,7 +68,7 @@ const Heroi = () => {
             </ul>
             {/* */}
             {/* {location.state.userId} */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 pt-4 cursor-pointer">
+            {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 pt-4 cursor-pointer">
               {location.state.dates.map((item, index) => (
                 <div
                   // onClick={() => navigate("/heroi/" + item._id)}
@@ -85,7 +92,7 @@ const Heroi = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
             {/* */}
           </div>
         </div>

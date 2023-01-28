@@ -8,7 +8,7 @@ const people = [
     department: "Optimization",
     role: "Admin",
     email: "jane.cooper@example.com",
-    image: "https://bit.ly/33HnjK0",
+    image: "https://cdn-icons-png.flaticon.com/512/6386/6386976.png",
   },
   {
     name: "John Doe",
