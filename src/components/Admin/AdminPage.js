@@ -1,4 +1,3 @@
-import React from "react";
 // import { VscServerProcess } from "react-icons/vsc";
 import {
   //   MdPriceCheck,
@@ -9,9 +8,14 @@ import { GiWorld } from "react-icons/gi";
 import { FiEdit } from "react-icons/fi";
 import { FaUserCog } from "react-icons/fa";
 import { VscGraph } from "react-icons/vsc";
-
+import React, { useState } from "react";
 import AboutCard from "./AboutCard";
+import AddDesti from "./AddDesti";
+import Table from "./Table";
+import Graph from "./Graph";
+
 function AdminPage() {
+  const [content, setcontent] = useState("");
   return (
     <div>
       <div className="max-w-full mx-auto p-4">
@@ -25,23 +29,48 @@ function AdminPage() {
             {/* Card Container */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Card */}
-              <AboutCard
-                icon={<GiWorld size={40} />}
-                heading="Add New destination
-                "
-              />
+              <div
+                onClick={() => {
+                  setcontent(<AddDesti />);
+                }}
+              >
+                <AboutCard
+                  icon={<GiWorld size={40} />}
+                  heading="Add New destination"
+                />
+              </div>
 
-              <AboutCard
-                icon={<FiEdit size={40} />}
-                heading="edit destination
+              <div
+                onClick={() => {
+                  setcontent(<AddDesti />);
+                }}
+              >
+                <AboutCard
+                  icon={<FiEdit size={40} />}
+                  heading="edit destination
                 Page"
-              />
-              <AboutCard icon={<FaUserCog size={40} />} heading="User Edit" />
-              <AboutCard icon={<VscGraph size={40} />} heading="statistics" />
+                />
+              </div>
+              <div
+                onClick={() => {
+                  setcontent(<Table />);
+                }}
+              >
+                <AboutCard icon={<FaUserCog size={40} />} heading="User Edit" />
+              </div>
+
+              <div
+                onClick={() => {
+                  setcontent(<Graph />);
+                }}
+              >
+                <AboutCard icon={<VscGraph size={40} />} heading="statistics" />
+              </div>
             </div>
           </div>
         </div>
       </div>
+      {content}
     </div>
   );
 }

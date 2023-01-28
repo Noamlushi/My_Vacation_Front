@@ -5,7 +5,6 @@ import Home from "./components/Home/Home";
 import Heroi from "./components/InfoPage/Heroi";
 import { Routes, Route } from "react-router-dom";
 import Flights from "./components/Home/Flights";
-import Table from "./components/Admin/Table";
 import Login from "./components/LogIn/Login";
 import Signup from "./components/LogIn/Signup";
 import UserEdit from "./components/Admin/UserEdit";
@@ -26,7 +25,7 @@ function App() {
           <Route path="/heroi" element={<Heroi />} />
           <Route path="/heroi/:id" element={<Heroi />} />
           <Route path="flights" element={<Flights />} />
-          <Route path="/table" element={<Table />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="useredit" element={<UserEdit />} />

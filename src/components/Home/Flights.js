@@ -124,7 +124,10 @@ const Flights = (props) => {
         {filterdata.map((item, index) => (
           <div
             onClick={() =>
-              navigate("/heroi/" + item._id, { state: { dates: item.dates } })
+              navigate(
+                "/heroi/" + item._id
+                // { state: { dates: item.dates } }
+              )
             }
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
@@ -136,10 +139,10 @@ const Flights = (props) => {
             />
             <div className="flex justify-between px-2 py-4">
               <p className="text-2lg">{item.name}</p>
-
+              <p className="text-2lg">{item.date}</p>
               <p>
                 <span className="text-lg bg-blue-500 text-white p-1 rounded-full">
-                  {item.price}
+                  {item.priceTicket + "$"}
                 </span>
               </p>
               {/* <p className="text-lg text-red p-1 rounded-full">

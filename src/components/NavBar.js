@@ -118,7 +118,7 @@ const Navbar = () => {
             </li>
             <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
               <MdHelp size={25} className="mr-4" />{" "}
-              <Link to="/table">Table</Link>
+              <Link to="/admin">Admin</Link>
             </li>
             <li className="text-xl py-4 flex" onClick={() => setNav(!nav)}>
               <FaCloudSun size={25} className="mr-4" />
