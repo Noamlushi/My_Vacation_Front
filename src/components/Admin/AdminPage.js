@@ -14,6 +14,7 @@ import AddDesti from "./AddDesti";
 import Table from "./Table";
 import Graph from "./Graph";
 import UserEdit from "./UserEdit";
+import FlightUpdate from "./FlightUpdate";
 
 function AdminPage() {
   const [content, setcontent] = useState("");
@@ -43,7 +44,7 @@ function AdminPage() {
 
               <div
                 onClick={() => {
-                  setcontent(<AddDesti />);
+                  setcontent(<FlightUpdate />);
                 }}
               >
                 <AboutCard
