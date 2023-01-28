@@ -13,6 +13,7 @@ import AboutCard from "./AboutCard";
 import AddDesti from "./AddDesti";
 import Table from "./Table";
 import Graph from "./Graph";
+import UserEdit from "./UserEdit";
 
 function AdminPage() {
   const [content, setcontent] = useState("");
@@ -53,7 +54,7 @@ function AdminPage() {
               </div>
               <div
                 onClick={() => {
-                  setcontent(<Table />);
+                  setcontent(<UserEdit />);
                 }}
               >
                 <AboutCard icon={<FaUserCog size={40} />} heading="User Edit" />

@@ -10,7 +10,7 @@ function AddDesti() {
         <form className="mt-6">
           <div className="mb-2">
             <label
-              for="Name"
+              htmlFor="Name"
               className="block text-sm font-semibold text-gray-800"
             >
               Name
@@ -22,7 +22,7 @@ function AddDesti() {
           </div>
           <div className="mb-2">
             <label
-              for="Continent"
+              htmlFor="Continent"
               className="block text-sm font-semibold text-gray-800"
             >
               Continent
@@ -34,7 +34,7 @@ function AddDesti() {
           </div>
           <div className="mb-2">
             <label
-              for="imgUrl"
+              htmlFor="imgUrl"
               className="block text-sm font-semibold text-gray-800"
             >
               Img url
@@ -46,7 +46,7 @@ function AddDesti() {
           </div>{" "}
           <div className="mb-2">
             <label
-              for="Price"
+              htmlFor="Price"
               className="block text-sm font-semibold text-gray-800"
             >
               Price
@@ -58,7 +58,7 @@ function AddDesti() {
           </div>{" "}
           <div className="mb-2">
             <label
-              for="Description"
+              htmlFor="Description"
               className="block text-sm font-semibold text-gray-800"
             >
               Description

@@ -18,4 +18,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// function getUserByUid(uid) {
+//   auth
+//     .getUser(uid)
+//     .then(function (userRecord) {
+//       console.log(userRecord.email);
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// }
+
 export default app;
+// export { getUserByUid };

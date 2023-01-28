@@ -29,6 +29,8 @@ const people = [
   // More people...
 ];
 
+//res.json(users.map((userdata, id) => userdata.user.user.email));
+
 function Table() {
   return (
     <div>
