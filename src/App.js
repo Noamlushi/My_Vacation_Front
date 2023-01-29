@@ -11,6 +11,7 @@ import UserEdit from "./components/Admin/UserEdit";
 import Weather from "./components/Weather/Weather";
 import AdminPage from "./components/Admin/AdminPage";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import SocketIO from "./SocketIO";
 // import Graph from "./components/Admin/Graph";
 
 // import Footer from "./components/Fotter";
@@ -20,6 +21,7 @@ function App() {
     <div>
       <AuthContextProvider>
         <NavBar />
+        <SocketIO />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/heroi" element={<Heroi />} />
