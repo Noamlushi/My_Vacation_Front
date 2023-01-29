@@ -49,7 +49,7 @@ const Heroi = () => {
               <li>Alimatha Island</li>
               <li>Alimatha Island</li>
             </ul>
-            <ImageSlider />
+            <ImageSlider gallery={flightdata.gallery} />
             {/* */}
             {/* {location.state.userId} */}
             {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 pt-4 cursor-pointer">
