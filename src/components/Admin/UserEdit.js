@@ -55,8 +55,8 @@ export default function UserEdit() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {data.map((user) => (
-                    <tr key={user._id}>
+                  {data.map((userdata) => (
+                    <tr key={userdata._id}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
@@ -68,10 +68,11 @@ export default function UserEdit() {
                           </div>
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">
-                              {user.name}
+                              {userdata.name}
                             </div>
                             <div className="text-sm text-gray-500">
-                              {user.email}
+                              {}
+                              {userdata.user.user.email}
                             </div>
                           </div>
                         </div>
@@ -93,7 +94,7 @@ export default function UserEdit() {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {user.role}
+                        {userdata.role}
                       </td>
                       <td className="px-1 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a
