@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import UserList from "./UserList";
-import { getUserByUid } from "../../firebase";
 import { FaTrashAlt } from "react-icons/fa";
-import axios from "axios";
 
 export default function UserEdit() {
   const [data, setData] = useState([]);

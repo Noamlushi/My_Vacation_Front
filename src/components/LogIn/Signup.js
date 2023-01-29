@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { createUser, user } = UserAuth();
+  const [setError] = useState("");
+  const { createUser } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {

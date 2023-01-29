@@ -1,9 +1,5 @@
 // import { VscServerProcess } from "react-icons/vsc";
-import {
-  //   MdPriceCheck,
 
-  MdSupportAgent,
-} from "react-icons/md";
 import { GiWorld } from "react-icons/gi";
 import { FiEdit } from "react-icons/fi";
 import { FaUserCog } from "react-icons/fa";
