@@ -52,9 +52,20 @@ export const data = {
 
 function Graph() {
   return (
-    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <Pie data={data} />;
-    </div>
+    <Pie
+      data={data}
+      options={{
+        title: {
+          display: true,
+          text: "Average Rainfall per month",
+          fontSize: 20,
+        },
+        legend: {
+          display: true,
+          position: "right",
+        },
+      }}
+    />
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+
+import { BsCartPlus } from "react-icons/bs";
 
 const Flights = (props) => {
   //   console.log(data);
@@ -132,6 +133,12 @@ const Flights = (props) => {
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
           >
+            <BsCartPlus
+              size={40}
+              color=""
+              className="absolute  ml-[329px] mt-2	 text-stone-100  border-solid  hover:scale-105 hover:text-green-400	"
+            />
+
             <img
               src={item.image}
               alt={item.name}
