@@ -39,16 +39,29 @@ const Heroi = () => {
             <p className="max-w-[900px] drop-shadow-2xl py-2 text-xl">
               {flightdata.info}
             </p>
-            <h2 className="  font-bold text-lg md:text-3xl drop-shadow-xl">
+            <h2 className="  font-bold text-lg md:text-3xl drop-shadow-xl mt-5 mb-5">
               Top <span className="text-blue-600">5</span> Attractions
             </h2>{" "}
             <ul className="list-disc   ">
-              <li>Alimatha Island</li>
-              <li>Alimatha Island</li>
-              <li>Alimatha Island</li>
-              <li>Alimatha Island</li>
-              <li>Alimatha Island</li>
+              {flightdata.attractions &&
+                flightdata.attractions.map((att, index) => (
+                  <li key={index}>
+                    <a
+                      className=" font-bold underline hover:text-blue-600 "
+                      href={att.url}
+                    >
+                      {att.attraction}
+                    </a>
+                  </li>
+                ))}
             </ul>
+            {/* <ul className="list-disc   ">
+              <li>Alimatha Island</li>
+              <li>Alimatha Island</li>
+              <li>Alimatha Island</li>
+              <li>Alimatha Island</li>
+              <li>Alimatha Island</li>
+            </ul> */}
             <ImageSlider gallery={flightdata.gallery} />
             {/* */}
             {/* {location.state.userId} */}
