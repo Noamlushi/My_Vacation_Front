@@ -7,15 +7,16 @@ import { VscGraph } from "react-icons/vsc";
 import React, { useState } from "react";
 import AboutCard from "./AboutCard";
 import AddDesti from "./AddDesti";
-import Table from "./Table";
 import Graph from "./Graph";
 import UserEdit from "./UserEdit";
 import FlightUpdate from "./FlightUpdate";
+import SocketIO from "../../SocketIO";
 
 function AdminPage() {
   const [content, setcontent] = useState("");
   return (
     <div>
+      <SocketIO />
       <div className="max-w-full mx-auto p-4">
         <div className="max-w-[1240px] mx-auto px-4 py-16 ">
           <div>

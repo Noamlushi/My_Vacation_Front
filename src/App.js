@@ -21,7 +21,6 @@ function App() {
     <div>
       <AuthContextProvider>
         <NavBar />
-        <SocketIO />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/heroi" element={<Heroi />} />
