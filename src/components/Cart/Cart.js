@@ -2,9 +2,10 @@ import CartItem from "./CartItem";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillCartFill } from "react-icons/bs";
 import React, { useState } from "react";
-
 function Cart() {
   const [cart, setCart] = useState(false);
+  const cartId = localStorage.getItem("cartId");
+
   return (
     <>
       <button

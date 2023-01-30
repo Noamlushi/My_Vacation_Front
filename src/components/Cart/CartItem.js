@@ -43,14 +43,18 @@ function CartItem() {
             <select
               aria-label="Select quantity"
               className=" ml-20 py-2 px-1 rounded-lg   border-solid border-blue-500 border-2 mr-2  "
+              defaultValue={"3"}
+              onChange={(e) => {
+                console.log("selected " + e.target.value);
+              }}
             >
-              <option>01</option>
-              <option>02</option>
-              <option>03</option>
-              <option>04</option>
-              <option>05</option>
-              <option>06</option>
-              <option>07</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
             </select>
           </div>
         </div>
