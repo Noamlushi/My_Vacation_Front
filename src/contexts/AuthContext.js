@@ -11,6 +11,7 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [cart, setCartId] = useState("");
 
   const createUser = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -35,7 +36,9 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+    <UserContext.Provider
+      value={{ createUser, user, cart, setCartId, logout, signIn }}
+    >
       {children}
     </UserContext.Provider>
   );

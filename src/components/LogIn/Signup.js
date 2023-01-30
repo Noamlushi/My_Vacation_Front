@@ -5,8 +5,8 @@ import axios from "axios";
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [setError] = useState("");
-  const { createUser } = UserAuth();
+  const [error, setError] = useState("");
+  const { createUser, setCartId } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,8 +14,14 @@ export default function Signup() {
     setError("");
     try {
       const new_user = await createUser(email, password);
-      await axios.post("/addUid", { user: new_user });
+      await axios.post("/signup", { user: new_user }).then((res) => {
+        // console.log(res.data.data._id);
+        // setCartId(res.data.data._id);
+        var cartId = res.data.data._id;
+        localStorage.setItem("cartId", cartId);
+      });
       navigate("/flights");
+      // navigate("/flights", { state: { idcart: res.data.data._id } });
     } catch (e) {
       setError(e.message);
       console.log(e.message);

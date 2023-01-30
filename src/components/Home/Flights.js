@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import { BsCartPlus } from "react-icons/bs";
+import { UserAuth } from "../../contexts/AuthContext";
 
 const Flights = (props) => {
   //   console.log(data);
@@ -9,6 +10,8 @@ const Flights = (props) => {
   const [filterdata, setFilterData] = useState([]);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const { cart } = UserAuth();
+  const location = useLocation();
 
   useEffect(() => {
     fetch("http://localhost:8000/flight")
@@ -48,7 +51,6 @@ const Flights = (props) => {
         Top <span className="text-blue-600">Rated</span>{" "}
         <span className="text-stone-900">Menu Items</span>
       </h1>
-
       {/* Filter Row */}
       <div className="flex flex-col lg:flex-row justify-between">
         {/* Fliter Type */}
@@ -124,12 +126,6 @@ const Flights = (props) => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 cursor-pointer">
         {filterdata.map((item, index) => (
           <div
-            onClick={() =>
-              navigate(
-                "/heroi/" + item._id
-                // { state: { dates: item.dates } }
-              )
-            }
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
           >
@@ -137,12 +133,28 @@ const Flights = (props) => {
               size={40}
               color=""
               className="absolute  ml-[329px] mt-2	 text-stone-100  border-solid  hover:scale-105 hover:text-green-400	"
+              onClick={() => {
+                axios
+                  .post("/addToCart", {
+                    cartId: localStorage.getItem("cartId"),
+                    itemId: item._id,
+                  })
+                  .then((response) => {
+                    console.log(response.data);
+                  });
+              }}
             />
 
             <img
               src={item.image}
               alt={item.name}
               className="w-full h-[200px] object-cover rounded-t-lg"
+              onClick={() =>
+                navigate(
+                  "/heroi/" + item._id
+                  // { state: { dates: item.dates } }
+                )
+              }
             />
             <div className="flex justify-between px-2 py-4">
               <p className="text-2lg">{item.name}</p>
