@@ -12,7 +12,7 @@ const Flights = (props) => {
   const navigate = useNavigate();
   // const { cart } = UserAuth();
   const location = useLocation();
-  const { addData } = CartItems();
+  const { addData, setcartItems } = CartItems();
 
   useEffect(() => {
     fetch("http://localhost:8000/flight")
@@ -135,12 +135,21 @@ const Flights = (props) => {
               color=""
               className="absolute  ml-[329px] mt-2	 text-stone-100  border-solid  hover:scale-105 hover:text-green-400	"
               onClick={() => {
-                addData({
+                const cart = JSON.parse(localStorage.getItem("cart"));
+                cart.push({
                   name: item.name,
                   url: item.image,
                   price: item.priceTicket,
                   date: item.date,
                 });
+                localStorage.setItem("cart", JSON.stringify(cart));
+                setcartItems(cart);
+                // addData({
+                //   name: item.name,
+                //   url: item.image,
+                //   price: item.priceTicket,
+                //   date: item.date,
+                // });
                 // axios
                 //   .post("/addToCart", {
                 //     cartId: localStorage.getItem("cartId"),

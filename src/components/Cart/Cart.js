@@ -8,7 +8,7 @@ function Cart() {
   const [cart, setCart] = useState(false);
   const { cartItems, total } = CartItems();
   // const cartId = localStorage.getItem("cartId");
-
+  // console.log(cartItems[0]);
   return (
     <>
       <button
@@ -35,16 +35,17 @@ function Cart() {
         <nav className="">
           <div className="flex flex-col max-w-3xl p-6  sm:p-10">
             <ul className="flex flex-col divide-y divide-gray-700">
-              {cartItems.map((item, index) => (
-                <div key={index}>
-                  <CartItem
-                    name={item.name}
-                    url={item.url}
-                    date={item.date}
-                    price={item.price}
-                  />
-                </div>
-              ))}
+              {cartItems &&
+                cartItems.map((item, index) => (
+                  <div key={index}>
+                    <CartItem
+                      name={item.name}
+                      url={item.url}
+                      date={item.date}
+                      price={item.price}
+                    />
+                  </div>
+                ))}
             </ul>
             <div className="space-y-1 text-right">
               <p>

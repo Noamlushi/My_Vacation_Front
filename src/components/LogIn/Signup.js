@@ -19,6 +19,8 @@ export default function Signup() {
         // setCartId(res.data.data._id);
         var cartId = res.data.data._id;
         localStorage.setItem("cartId", cartId);
+        localStorage.setItem("cart", JSON.stringify([]));
+        //cart
       });
       navigate("/flights");
       // navigate("/flights", { state: { idcart: res.data.data._id } });
