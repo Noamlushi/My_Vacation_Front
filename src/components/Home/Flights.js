@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { BsCartPlus } from "react-icons/bs";
-import { UserAuth } from "../../contexts/AuthContext";
+import { CartItems } from "../../contexts/CartContext";
 
 const Flights = (props) => {
   //   console.log(data);
@@ -10,8 +10,9 @@ const Flights = (props) => {
   const [filterdata, setFilterData] = useState([]);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const { cart } = UserAuth();
+  // const { cart } = UserAuth();
   const location = useLocation();
+  const { addData } = CartItems();
 
   useEffect(() => {
     fetch("http://localhost:8000/flight")
@@ -134,14 +135,20 @@ const Flights = (props) => {
               color=""
               className="absolute  ml-[329px] mt-2	 text-stone-100  border-solid  hover:scale-105 hover:text-green-400	"
               onClick={() => {
-                axios
-                  .post("/addToCart", {
-                    cartId: localStorage.getItem("cartId"),
-                    itemId: item._id,
-                  })
-                  .then((response) => {
-                    console.log(response.data);
-                  });
+                addData({
+                  name: item.name,
+                  url: item.image,
+                  price: item.priceTicket,
+                  date: item.date,
+                });
+                // axios
+                //   .post("/addToCart", {
+                //     cartId: localStorage.getItem("cartId"),
+                //     itemId: item._id,
+                //   })
+                //   .then((response) => {
+                //     console.log(response.data);
+                //   });
               }}
             />
 

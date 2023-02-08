@@ -11,6 +11,7 @@ import UserEdit from "./components/Admin/UserEdit";
 import Weather from "./components/Weather/Weather";
 import AdminPage from "./components/Admin/AdminPage";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { CartContextProvider } from "./contexts/CartContext";
 import SocketIO from "./SocketIO";
 // import Graph from "./components/Admin/Graph";
 
@@ -19,20 +20,22 @@ import SocketIO from "./SocketIO";
 function App() {
   return (
     <div>
-      <AuthContextProvider>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/heroi" element={<Heroi />} />
-          <Route path="/heroi/:id" element={<Heroi />} />
-          <Route path="flights" element={<Flights />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="useredit" element={<UserEdit />} />
-          <Route path="/weather" element={<Weather />} />
-        </Routes>
-      </AuthContextProvider>
+      <CartContextProvider>
+        <AuthContextProvider>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/heroi" element={<Heroi />} />
+            <Route path="/heroi/:id" element={<Heroi />} />
+            <Route path="flights" element={<Flights />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="useredit" element={<UserEdit />} />
+            <Route path="/weather" element={<Weather />} />
+          </Routes>
+        </AuthContextProvider>
+      </CartContextProvider>
       {/* <AdminPage /> */}
     </div>
   );

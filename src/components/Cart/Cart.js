@@ -2,9 +2,12 @@ import CartItem from "./CartItem";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillCartFill } from "react-icons/bs";
 import React, { useState } from "react";
+import { CartItems } from "../../contexts/CartContext";
+
 function Cart() {
   const [cart, setCart] = useState(false);
-  const cartId = localStorage.getItem("cartId");
+  const { cartItems, total } = CartItems();
+  // const cartId = localStorage.getItem("cartId");
 
   return (
     <>
@@ -32,13 +35,21 @@ function Cart() {
         <nav className="">
           <div className="flex flex-col max-w-3xl p-6  sm:p-10">
             <ul className="flex flex-col divide-y divide-gray-700">
-              <CartItem />
-              <CartItem />
+              {cartItems.map((item, index) => (
+                <div key={index}>
+                  <CartItem
+                    name={item.name}
+                    url={item.url}
+                    date={item.date}
+                    price={item.price}
+                  />
+                </div>
+              ))}
             </ul>
             <div className="space-y-1 text-right">
               <p>
                 Total amount:
-                <span className="font-semibold">1010.94 €</span>
+                <span className="font-semibold">{total} €</span>
               </p>
             </div>
             <div className="flex justify-end space-x-4">
