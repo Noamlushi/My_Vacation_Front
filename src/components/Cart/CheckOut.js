@@ -69,23 +69,27 @@ export default function CheckOut() {
             </div>
             {/* <div className="flex mt-7 flex-col items-end w-full space-y-6">
               <div className="flex justify-between w-full items-center"> */}
-                {cartItems.map((item, index) => (
-                  <div key={index} className="flex mt-7 flex-col items-end w-full space-y-6">
-                    <div className="flex justify-between w-full items-center">
-                    {/* <p className="text-lg leading-4 text-gray-600">
+            {cartItems.map((item, index) => (
+              <div
+                key={index}
+                className="flex mt-7 flex-col items-end w-full space-y-6"
+              >
+                <div className="flex justify-between w-full items-center">
+                  {/* <p className="text-lg leading-4 text-gray-600">
                       {item.name}
                     </p> */}
-                    <p className="text-lg leading-4 text-gray-600">
-                    {item.name +"  (x"+item.q +")"}
-                    </p>
+                  <p className="text-lg leading-4 text-gray-600">
+                    {item.name}
+                    <span className=" text-blue-600"> (x{item.q}) </span>
+                  </p>
 
-                    <p className="text-lg font-semibold leading-4 text-gray-600">
-                      {item.price * item.q+"$"}
-                    </p>
-                    </div>
-                  </div>
-                ))}
-              {/* </div>
+                  <p className="text-lg font-semibold leading-4 text-gray-600">
+                    {item.price * item.q + "$"}
+                  </p>
+                </div>
+              </div>
+            ))}
+            {/* </div>
             </div> */}
             {/* <div className="flex mt-7 flex-col items-end w-full space-y-6">
               <div className="flex justify-between w-full items-center">
@@ -100,7 +104,7 @@ export default function CheckOut() {
               <p className="text-xl font-semibold leading-4 text-gray-800">
                 Total{" "}
               </p>
-              <p className="text-lg font-semibold leading-4 text-gray-800">
+              <p className="text-lg font-semibold leading-4 text-blue-600">
                 {total + "$"}
               </p>
             </div>

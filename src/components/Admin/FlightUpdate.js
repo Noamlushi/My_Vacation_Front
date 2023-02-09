@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import axios from "axios";
+import { async } from "@firebase/util";
 
 const FlightUpdate = (props) => {
   //   console.log(data);
   // const [data, setData] = useState([]);
   const [filterdata, setFilterData] = useState([]);
   const [data, setData] = useState([]);
+  const [toFetch, settoFetch] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +19,7 @@ const FlightUpdate = (props) => {
         setFilterData(data);
         setData(data);
       });
-  }, []);
+  }, [toFetch]);
 
   //   Filter Type burgers/pizza/etc
   const filterType = (category) => {
@@ -35,6 +38,18 @@ const FlightUpdate = (props) => {
         return item.price === price;
       })
     );
+  };
+
+  const deleteFlightById = async (id) => {
+    axios
+      .delete("http://localhost:8000/flight/deleteFlight/" + id)
+      .then((response) => {
+        settoFetch(!toFetch);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleClick = (id) => {
@@ -122,12 +137,12 @@ const FlightUpdate = (props) => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 cursor-pointer">
         {filterdata.map((item, index) => (
           <div
-            onClick={() =>
-              navigate(
-                "/heroi/" + item._id
-                // { state: { dates: item.dates } }
-              )
-            }
+            // onClick={() =>
+            //   navigate(
+            //     "/heroi/" + item._id
+            //     // { state: { dates: item.dates } }
+            //   )
+            // }
             key={index}
             className="border shadow-lg rounded-lg hover:scale-105 duration-300"
           >
@@ -145,9 +160,14 @@ const FlightUpdate = (props) => {
                 </span> */}
               </p>
               <p className="text-lg text-red p-1 rounded-full">
-                <a href="#" className="text-red-600 hover:text-red-900">
+                <button
+                  onClick={() => {
+                    deleteFlightById(item._id);
+                  }}
+                  className="text-red-600 hover:text-red-900"
+                >
                   <AiFillDelete size={30} className="text=red" />
-                </a>
+                </button>
                 <a href="#" className="text-blue-600 hover:text-red-900">
                   <AiFillEdit size={30} className="text=red" />
                 </a>
