@@ -35,14 +35,14 @@ const Navbar = () => {
       </div>
 
       {/* Search Input */}
-      <div className="bg-stone-300	text-blue-800	 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
+      {/* <div className="bg-stone-300	text-blue-800	 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <AiOutlineSearch size={25} />
         <input
           className="bg-transparent p-2 w-full focus:outline-none "
           type="text"
           placeholder="Search Your Next Vacation"
         />
-      </div>
+      </div> */}
       <div className=" flex items-center">
         {!user ? (
           <button className="bg-stone-600 text-white hidden md:flex items-right py-2 rounded-2xl w-20 mr-2">
@@ -91,10 +91,7 @@ const Navbar = () => {
             <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
               <FaHome size={25} className="mr-4" /> <Link to="/">Home</Link>
             </li>
-            <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
-              <FaInfo size={25} className="mr-4" />{" "}
-              <Link to="/heroi">Heroi</Link>
-            </li>
+
             <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
               <MdAirplaneTicket size={25} className="mr-4" />{" "}
               <Link to="/flights">Flights</Link>
@@ -106,12 +103,6 @@ const Navbar = () => {
             <li className="text-xl py-4 flex" onClick={() => setNav(!nav)}>
               <FaCloudSun size={25} className="mr-4" />
               <Link to="/weather">Weather </Link>
-            </li>
-            <li className="text-xl py-4 flex">
-              <BsFillSaveFill size={25} className="mr-4" /> Best Ones
-            </li>
-            <li className="text-xl py-4 flex">
-              <FaUserFriends size={25} className="mr-4" /> Invite Friends
             </li>
           </ul>
         </nav>

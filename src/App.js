@@ -10,6 +10,7 @@ import Signup from "./components/LogIn/Signup";
 import UserEdit from "./components/Admin/UserEdit";
 import Weather from "./components/Weather/Weather";
 import AdminPage from "./components/Admin/AdminPage";
+import CheckOut from "./components/Cart/CheckOut";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { CartContextProvider } from "./contexts/CartContext";
 import SocketIO from "./SocketIO";
@@ -33,6 +34,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="useredit" element={<UserEdit />} />
             <Route path="/weather" element={<Weather />} />
+            <Route path="/checkOut" element={<CheckOut />} />
           </Routes>
         </AuthContextProvider>
       </CartContextProvider>

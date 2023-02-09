@@ -66,6 +66,7 @@ function Cart() {
                 <span className="sr-only sm:not-sr-only">to shop</span>
               </button>
               <button
+                onClick={() => navigate("/checkOut")}
                 type="button"
                 className="px-6 py-2 border rounded-md bg-blue-600 text-white"
               >
