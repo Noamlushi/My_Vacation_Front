@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../contexts/AuthContext";
+import { CartItems } from "../../contexts/CartContext";
 import axios from "axios";
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ export default function Signup() {
   const [error, setError] = useState("");
   const { createUser, setCartId } = UserAuth();
   const navigate = useNavigate();
+  const { setcartItems, setTotal } = CartItems();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +22,10 @@ export default function Signup() {
         var cartId = res.data.data._id;
         localStorage.setItem("cartId", cartId);
         localStorage.setItem("cart", JSON.stringify([]));
+        setcartItems([]);
+        localStorage.setItem("total", 0);
+        setTotal(0);
+
         //cart
       });
       navigate("/flights");

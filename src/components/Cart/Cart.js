@@ -43,6 +43,7 @@ function Cart() {
                       url={item.url}
                       date={item.date}
                       price={item.price}
+                      q={item.q}
                     />
                   </div>
                 ))}
@@ -50,7 +51,7 @@ function Cart() {
             <div className="space-y-1 text-right">
               <p>
                 Total amount:
-                <span className="font-semibold">{total} €</span>
+                <span className="font-semibold">{total && total} €</span>
               </p>
             </div>
             <div className="flex justify-end space-x-4">

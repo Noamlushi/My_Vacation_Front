@@ -1,6 +1,7 @@
 import React from "react";
-
+import { CartItems } from "../../contexts/CartContext";
 function CartItem(props) {
+  const { RemoveItem, change_q } = CartItems();
   return (
     <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
       <div className="flex w-full space-x-2 sm:space-x-4">
@@ -18,12 +19,17 @@ function CartItem(props) {
               <p className="text-sm dark:text-gray-400">{props.date}</p>
             </div>
             <div className="text-right">
-              <p className="text-lg font-semibold">{props.price + "$"} </p>
+              <p className="text-lg font-semibold">
+                {props.price * props.q + "$"}{" "}
+              </p>
               {/* <p className="text-sm line-through dark:text-gray-600">600€</p> */}
             </div>
           </div>
           <div className="flex text-sm divide-x">
             <button
+              onClick={() => {
+                RemoveItem(props.name, props.price, props.q);
+              }}
               type="button"
               className="flex items-center px-2 py-1 pl-0 space-x-1"
             >
@@ -41,10 +47,12 @@ function CartItem(props) {
               <span>Remove</span>
             </button>
             <select
+              value={props.q}
               aria-label="Select quantity"
               className=" ml-20 py-2 px-1 rounded-lg   border-solid border-blue-500 border-2 mr-2  "
-              defaultValue={"3"}
+              // defaultValue={props.q}
               onChange={(e) => {
+                change_q(props.name, e.target.value);
                 console.log("selected " + e.target.value);
               }}
             >
