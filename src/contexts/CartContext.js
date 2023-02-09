@@ -17,7 +17,7 @@ export const CartContextProvider = ({ children }) => {
     var bool = false;
     for (var i = 0; i < cart.length; i++) {
       if (cart[i].name == item.name) {
-        cart[i].q += 1;
+        cart[i].q = parseInt(cart[i].q, 10) + 1;
         bool = true;
       }
     }

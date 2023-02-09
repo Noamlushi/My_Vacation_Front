@@ -3,10 +3,12 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BsFillCartFill } from "react-icons/bs";
 import React, { useState } from "react";
 import { CartItems } from "../../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const [cart, setCart] = useState(false);
   const { cartItems, total } = CartItems();
+  const navigate = useNavigate();
   // const cartId = localStorage.getItem("cartId");
   // console.log(cartItems[0]);
   return (
@@ -56,6 +58,7 @@ function Cart() {
             </div>
             <div className="flex justify-end space-x-4">
               <button
+                onClick={() => navigate("/flights")}
                 type="button"
                 className="px-6 py-2 border rounded-md bg-stone-600 text-white"
               >
