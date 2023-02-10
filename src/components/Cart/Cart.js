@@ -53,7 +53,7 @@ function Cart() {
             <div className="space-y-1 text-right">
               <p>
                 Total amount:
-                <span className="font-semibold">{total && total} €</span>
+                <span className="font-semibold">{total && total} $</span>
               </p>
             </div>
             <div className="flex justify-end space-x-4">
