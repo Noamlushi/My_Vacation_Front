@@ -10,6 +10,7 @@ const Flights = (props) => {
   // const [data, setData] = useState([]);
   const [filterdata, setFilterData] = useState([]);
   const [data, setData] = useState([]);
+  const [country, setCountry] = useState("");
   const navigate = useNavigate();
   // const { cart } = UserAuth();
   const location = useLocation();
@@ -41,6 +42,22 @@ const Flights = (props) => {
         return item.price === price;
       })
     );
+  };
+
+  const searchCountry = (event) => {
+    if (event.key === "Enter") {
+      setFilterData(
+        data.filter((item) => {
+          // return item.name === country;
+          return item.name.toLowerCase().indexOf(country.toLowerCase()) !== -1;
+        })
+      );
+      // axios.get("http://localhost:8000/flight/FindByCountry/"+{country}).then((response) => {
+      //   // setData(response.data);
+      //   console.log(response.data);
+      // });
+      // setCountry("");
+    }
   };
 
   const handleClick = (id) => {
@@ -128,6 +145,9 @@ const Flights = (props) => {
         <div className="bg-stone-300	text-blue-800	 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
           <AiOutlineSearch size={25} />
           <input
+            value={country}
+            onChange={(event) => setCountry(event.target.value)}
+            onKeyPress={searchCountry}
             className="bg-transparent p-2 w-full focus:outline-none "
             type="text"
             placeholder="Search Your Next Vacation"
