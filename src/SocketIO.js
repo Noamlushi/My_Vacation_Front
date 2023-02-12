@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
-
-const socket = io();
 
 const SocketIO = () => {
   const [numClients, setNumClients] = useState(0);
+  const socketRef = useRef(null);
 
   useEffect(() => {
-    socket.on("users", (count) => {
+    socketRef.current = io();
+    socketRef.current.on("users", (count) => {
       setNumClients(count);
     });
 
     return () => {
-      socket.disconnect();
+      socketRef.current.disconnect();
     };
   }, []);
 
