@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import { createContext, useContext, useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 
-const SocketIO = () => {
+const SocketContext = createContext();
+
+export const SocketContextProvider = ({ children }) => {
   const [numClients, setNumClients] = useState(0);
   const socketRef = useRef(null);
 
@@ -15,12 +17,13 @@ const SocketIO = () => {
       socketRef.current.disconnect();
     };
   }, []);
-
   return (
-    <div>
-      <p>Number of connected clients: {numClients}</p>
-    </div>
+    <SocketContext.Provider value={{ numClients }}>
+      {children}
+    </SocketContext.Provider>
   );
 };
 
-export default SocketIO;
+export const Socket = () => {
+  return useContext(SocketContext);
+};

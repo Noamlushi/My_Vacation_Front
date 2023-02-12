@@ -14,6 +14,8 @@ import CheckOut from "./components/Cart/CheckOut";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { CartContextProvider } from "./contexts/CartContext";
 import SocketIO from "./SocketIO";
+import { SocketContextProvider } from "./contexts/SocketContext";
+import EditDest from "./components/Admin/EditDest";
 // import Graph from "./components/Admin/Graph";
 
 // import Footer from "./components/Fotter";
@@ -21,23 +23,27 @@ import SocketIO from "./SocketIO";
 function App() {
   return (
     <div>
-      <CartContextProvider>
-        <AuthContextProvider>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/heroi" element={<Heroi />} />
-            <Route path="/heroi/:id" element={<Heroi />} />
-            <Route path="flights" element={<Flights />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="useredit" element={<UserEdit />} />
-            <Route path="/weather" element={<Weather />} />
-            <Route path="/checkOut" element={<CheckOut />} />
-          </Routes>
-        </AuthContextProvider>
-      </CartContextProvider>
+      <SocketContextProvider>
+        <CartContextProvider>
+          <AuthContextProvider>
+            <NavBar />
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/heroi" element={<Heroi />} />
+              <Route path="/heroi/:id" element={<Heroi />} />
+              <Route path="flights" element={<Flights />} />
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="useredit" element={<UserEdit />} />
+              <Route path="/weather" element={<Weather />} />
+              <Route path="/checkOut" element={<CheckOut />} />
+              <Route path="/editFlight/:id" element={<EditDest />} />
+            </Routes>
+          </AuthContextProvider>
+        </CartContextProvider>
+      </SocketContextProvider>
       {/* <AdminPage /> */}
     </div>
   );

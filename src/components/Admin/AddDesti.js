@@ -130,7 +130,7 @@ function AddDesti() {
               htmlFor="Boarding"
               className="block text-sm font-semibold text-gray-800"
             >
-              Boarding (hh/mm)
+              Boarding (hh:mm)
             </label>
             <input
               value={formData.boarding}
@@ -145,7 +145,7 @@ function AddDesti() {
               htmlFor="Landing"
               className="block text-sm font-semibold text-gray-800"
             >
-              Landing (hh/mm)
+              Landing (hh:mm)
             </label>
             <input
               value={formData.landing}

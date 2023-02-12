@@ -11,12 +11,20 @@ import Graph from "./Graph";
 import UserEdit from "./UserEdit";
 import FlightUpdate from "./FlightUpdate";
 import SocketIO from "../../SocketIO";
+import { Socket } from "../../contexts/SocketContext";
+import EditDest from "./EditDest";
 
 function AdminPage() {
   const [content, setcontent] = useState("");
+  const { numClients } = Socket();
+
+  const handleEdit = (id) => {
+    setcontent(<EditDest id={id} />);
+  };
+
   return (
     <div>
-      <SocketIO />
+      <p>Number of connected clients: {numClients}</p>
       <div className="max-w-full mx-auto p-4">
         <div className="max-w-[1240px] mx-auto px-4 py-16 ">
           <div>
@@ -41,7 +49,7 @@ function AdminPage() {
 
               <div
                 onClick={() => {
-                  setcontent(<FlightUpdate />);
+                  setcontent(<FlightUpdate editFlight={handleEdit} />);
                 }}
               >
                 <AboutCard

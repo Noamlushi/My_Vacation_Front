@@ -168,9 +168,18 @@ const FlightUpdate = (props) => {
                 >
                   <AiFillDelete size={30} className="text=red" />
                 </button>
-                <a href="#" className="text-blue-600 hover:text-red-900">
+                <button
+                  onClick={() => {
+                    // navigate(
+                    //   "/editFlight/" + item._id
+                    //   // { state: { dates: item.dates } }
+                    // );
+                    props.editFlight(item._id);
+                  }}
+                  className="text-blue-600 hover:text-red-900"
+                >
                   <AiFillEdit size={30} className="text=red" />
-                </a>
+                </button>
               </p>
             </div>
           </div>
