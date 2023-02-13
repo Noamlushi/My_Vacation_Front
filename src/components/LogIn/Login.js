@@ -1,19 +1,34 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../contexts/AuthContext";
+import { CartItems } from "../../contexts/CartContext";
+import axios from "axios";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
   const { signIn } = UserAuth();
+  const { setTotal, setcartItems } = CartItems();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await signIn(email, password);
-      navigate("/flights");
+      await axios.post("/login", { email: email }).then((res) => {
+        var cartId = res.data.id;
+        var cart = res.data.cart;
+        var total = res.data.total;
+        localStorage.setItem("cartId", cartId);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        setcartItems(cart);
+        localStorage.setItem("total", total);
+        setTotal(total);
+        navigate("/flights");
+      });
     } catch (e) {
       setError(e.message);
       console.log(e.message);

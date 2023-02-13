@@ -12,17 +12,24 @@ import axios from "axios";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const { logout, user } = UserAuth();
-  const { cartItems, total } = CartItems();
+  const { cartItems, total, setTotal, setcartItems } = CartItems();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await logout();
       var cartId = localStorage.getItem("cartId");
+      var total = localStorage.getItem("total");
       axios.post("http://localhost:8000/logout", {
         cartId: cartId,
         cartItems: cartItems,
+        total: total,
       });
+      localStorage.setItem("cartId", "");
+      localStorage.setItem("cart", JSON.stringify([]));
+      setcartItems([]);
+      localStorage.setItem("total", 0);
+      setTotal(0);
       // .then((response) => {
       //   console.log(response.data);
       // })
