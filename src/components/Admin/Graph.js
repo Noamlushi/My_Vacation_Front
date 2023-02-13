@@ -52,20 +52,23 @@ export const data = {
 
 function Graph() {
   return (
-    <Pie
-      data={data}
-      options={{
-        title: {
-          display: true,
-          text: "Average Rainfall per month",
-          fontSize: 20,
-        },
-        legend: {
-          display: true,
-          position: "right",
-        },
-      }}
-    />
+    <div className="absolute w-full h-full  max-h-[800px]  flex  justify-center my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <Pie
+        data={data}
+        options={{
+          title: {
+            display: true,
+            text: "Average Rainfall per month",
+            fontSize: 20,
+            responsive: true,
+            maintainAspectRatio: false,
+          },
+          legend: {
+            display: false,
+          },
+        }}
+      />
+    </div>
   );
 }
 

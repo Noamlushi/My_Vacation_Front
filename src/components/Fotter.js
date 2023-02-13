@@ -4,7 +4,7 @@ import { TiSocialPinterest } from "react-icons/ti";
 
 const Footer = () => {
   return (
-    <div className=" inset-x-0 bottom-0  h-96  w-full mt-24 bg-stone-900 text-gray-300 py-2 px-2">
+    <div className=" inset-x-0 bottom-0  h-[200]  w-full mt-24 bg-stone-900 text-gray-300 py-2 px-2">
       <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-blue-600 py-8 px-4">
         <div className="col-span-2 py-8 md:pt-2">
           <p className="font-bold uppercase">Subscribe to our newsletters</p>
