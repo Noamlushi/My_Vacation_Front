@@ -4,6 +4,7 @@ import axios from "axios";
 import { BsCartPlus } from "react-icons/bs";
 import { CartItems } from "../../contexts/CartContext";
 import { AiOutlineSearch } from "react-icons/ai";
+import { UserAuth } from "../../contexts/AuthContext";
 
 const Flights = (props) => {
   //   console.log(data);
@@ -11,6 +12,7 @@ const Flights = (props) => {
   const [filterdata, setFilterData] = useState([]);
   const [data, setData] = useState([]);
   const [country, setCountry] = useState("");
+  const { user } = UserAuth();
   const navigate = useNavigate();
   // const { cart } = UserAuth();
 
@@ -161,35 +163,37 @@ const Flights = (props) => {
               key={index}
               className="border shadow-lg rounded-lg hover:scale-105 duration-300"
             >
-              <BsCartPlus
-                size={40}
-                color=""
-                className="absolute  ml-[329px] mt-2	 text-stone-100  border-solid  hover:scale-105 hover:text-green-400	"
-                onClick={() => {
-                  addData({
-                    name: item.name,
-                    url: item.image,
-                    price: item.priceTicket,
-                    date: item.date,
-                    continent: item.category,
-                  });
+              {user && (
+                <BsCartPlus
+                  size={40}
+                  color=""
+                  className="absolute  ml-[329px] mt-2	 text-stone-100  border-solid  hover:scale-105 hover:text-green-400	"
+                  onClick={() => {
+                    addData({
+                      name: item.name,
+                      url: item.image,
+                      price: item.priceTicket,
+                      date: item.date,
+                      continent: item.category,
+                    });
 
-                  // addData({
-                  //   name: item.name,
-                  //   url: item.image,
-                  //   price: item.priceTicket,
-                  //   date: item.date,
-                  // });
-                  // axios
-                  //   .post("/addToCart", {
-                  //     cartId: localStorage.getItem("cartId"),
-                  //     itemId: item._id,
-                  //   })
-                  //   .then((response) => {
-                  //     console.log(response.data);
-                  //   });
-                }}
-              />
+                    // addData({
+                    //   name: item.name,
+                    //   url: item.image,
+                    //   price: item.priceTicket,
+                    //   date: item.date,
+                    // });
+                    // axios
+                    //   .post("/addToCart", {
+                    //     cartId: localStorage.getItem("cartId"),
+                    //     itemId: item._id,
+                    //   })
+                    //   .then((response) => {
+                    //     console.log(response.data);
+                    //   });
+                  }}
+                />
+              )}
 
               <img
                 src={item.image}

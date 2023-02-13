@@ -22,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const logout = () => {
+    setUser(null);
     return signOut(auth);
   };
 

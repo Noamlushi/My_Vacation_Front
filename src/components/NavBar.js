@@ -6,15 +6,29 @@ import { MdHelp, MdAirplaneTicket } from "react-icons/md";
 import Cart from "./Cart/Cart";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
+import { CartItems } from "../contexts/CartContext";
+import axios from "axios";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const { logout, user } = UserAuth();
+  const { cartItems, total } = CartItems();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await logout();
+      var cartId = localStorage.getItem("cartId");
+      axios.post("http://localhost:8000/logout", {
+        cartId: cartId,
+        cartItems: cartItems,
+      });
+      // .then((response) => {
+      //   console.log(response.data);
+      // })
+      // .catch((error) => {
+      //   console.error(error);
+      // });
       navigate("/");
       console.log("You are logged out");
     } catch (e) {
@@ -59,7 +73,7 @@ const Navbar = () => {
           </button>
         )}
 
-        <Cart />
+        {user && <Cart />}
       </div>
 
       {/* Mobile Menu */}

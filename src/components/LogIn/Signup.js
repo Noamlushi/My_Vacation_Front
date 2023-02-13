@@ -19,7 +19,7 @@ export default function Signup() {
       await axios.post("/signup", { user: new_user }).then((res) => {
         // console.log(res.data.data._id);
         // setCartId(res.data.data._id);
-        var cartId = res.data.data._id;
+        var cartId = res.data.id;
         localStorage.setItem("cartId", cartId);
         localStorage.setItem("cart", JSON.stringify([]));
         setcartItems([]);
