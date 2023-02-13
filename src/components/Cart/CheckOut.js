@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { CartItems } from "../../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 export default function CheckOut() {
-  const { cartItems, total } = CartItems();
-
+  const { setcartItems, cartItems, total, setTotal } = CartItems();
+  const navigate = useNavigate();
   return (
     <div className="overflow-y-hidden">
       <div className="flex justify-center items-center 2xl:container 2xl:mx-auto lg:py-16 md:py-12 py-9 px-4 md:px-6 lg:px-20 xl:px-44 ">
         <div className="flex w-full sm:w-9/12 lg:w-full flex-col lg:flex-row justify-center items-center lg:space-x-10 2xl:space-x-36 space-y-12 lg:space-y-0">
           <div className="flex w-full  flex-col justify-start items-start">
-            <div className>
+            <div>
               <p className="text-3xl lg:text-5xl font-semibold leading-7 lg:leading-9 text-blue-600">
                 <span className="text-stone-500">Check</span>out
               </p>
@@ -49,7 +51,28 @@ export default function CheckOut() {
                 placeholder="Phone Number"
               />
             </div>
-            <button className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-blue-600 py-4 w-full md:w-4/12 lg:w-full text-white bg-stone-700">
+            <button
+              onClick={() => {
+                axios
+                  .post(
+                    "http://localhost:8000/updateSales",
+                    cartItems.map((item, index) => ({
+                      continent: item.continent,
+                      q: item.q,
+                    }))
+                  )
+                  .then((response) => {
+                    // console.log(JSON.stringify(response.data));
+
+                    localStorage.setItem("cart", JSON.stringify([]));
+                    setcartItems([]);
+                    localStorage.setItem("total", 0);
+                    setTotal(0);
+                    navigate("/");
+                  });
+              }}
+              className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-blue-600 py-4 w-full md:w-4/12 lg:w-full text-white bg-stone-700"
+            >
               Proceed to payment
             </button>
             {/* <div className="mt-4 flex justify-start items-center w-full">

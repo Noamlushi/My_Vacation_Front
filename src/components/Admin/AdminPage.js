@@ -13,6 +13,7 @@ import FlightUpdate from "./FlightUpdate";
 import SocketIO from "../../SocketIO";
 import { Socket } from "../../contexts/SocketContext";
 import EditDest from "./EditDest";
+import axios from "axios";
 
 function AdminPage() {
   const [content, setcontent] = useState("");
@@ -68,8 +69,17 @@ function AdminPage() {
 
               <div
                 onClick={() => {
-                  setcontent(<Graph />);
+                  axios
+                    .get("http://localhost:8000/allSales")
+                    .then((response) => {
+                      var data = response.data;
+                      // console.log(data);
+                      setcontent(<Graph data={data} />);
+                    });
                 }}
+                // onClick={() => {
+                //   setcontent(<Graph />);
+                // }}
               >
                 <AboutCard icon={<VscGraph size={40} />} heading="statistics" />
               </div>

@@ -28,6 +28,7 @@ export const CartContextProvider = ({ children }) => {
         price: item.price,
         date: item.date,
         q: 1,
+        continent:item.continent
       });
     }
 

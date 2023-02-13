@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BsCartPlus } from "react-icons/bs";
 import { CartItems } from "../../contexts/CartContext";
@@ -13,7 +13,7 @@ const Flights = (props) => {
   const [country, setCountry] = useState("");
   const navigate = useNavigate();
   // const { cart } = UserAuth();
-  const location = useLocation();
+
   const { addData, setcartItems, setTotal, upDateTotal } = CartItems();
 
   useEffect(() => {
@@ -171,6 +171,7 @@ const Flights = (props) => {
                     url: item.image,
                     price: item.priceTicket,
                     date: item.date,
+                    continent: item.category,
                   });
 
                   // addData({

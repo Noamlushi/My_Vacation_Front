@@ -16,6 +16,7 @@ import { CartContextProvider } from "./contexts/CartContext";
 import SocketIO from "./SocketIO";
 import { SocketContextProvider } from "./contexts/SocketContext";
 import EditDest from "./components/Admin/EditDest";
+// import Profile from "./Profile";
 // import Graph from "./components/Admin/Graph";
 
 // import Footer from "./components/Fotter";
@@ -40,6 +41,7 @@ function App() {
               <Route path="/weather" element={<Weather />} />
               <Route path="/checkOut" element={<CheckOut />} />
               <Route path="/editFlight/:id" element={<EditDest />} />
+              {/* <Route path="/profile" element={<Profile />} /> */}
             </Routes>
           </AuthContextProvider>
         </CartContextProvider>
