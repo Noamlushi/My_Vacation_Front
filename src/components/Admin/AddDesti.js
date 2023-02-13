@@ -94,9 +94,9 @@ function AddDesti() {
         <h1 className="text-5xl font-semibold text-center text-blue-700 ">
           Add A New Destination
         </h1>
-        <div className="grid w-full grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-7 mt-7 ">
-          <form className="mt-6 " onSubmit={handleSubmit}>
-            <div className="mb-2 ">
+        <form className="mt-6" onSubmit={handleSubmit}>
+          <div className="grid w-full grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-7 mt-7 ">
+            <div className="mb-2">
               <label
                 htmlFor="Name"
                 className="block text-sm font-semibold text-gray-800"
@@ -226,13 +226,21 @@ function AddDesti() {
               >
                 Description
               </label>
-              <input
+              <textarea
+                className="resize-none w-full h-[170px] px-4 py-4 text-base outline-none text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                placeholder="Start typing here ..."
+                name="info"
+                value={formData.info}
+                onChange={handleChange}
+              />
+
+              {/* <input
                 value={formData.info}
                 onChange={handleChange}
                 name="info"
                 type="text"
                 className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
+              /> */}
             </div>{" "}
             <div className="mb-2">
               <label
@@ -294,9 +302,6 @@ function AddDesti() {
                 className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-          </form>
-
-          <form className="mt-6 " onSubmit={handleSubmit}>
             <div className="mb-2">
               <label
                 htmlFor="gallery-4"
@@ -462,13 +467,13 @@ function AddDesti() {
                 className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-          </form>
-        </div>
-        <div className="mt-6">
-          <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-            submit
-          </button>
-        </div>
+          </div>{" "}
+          <div className="mt-6">
+            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+              submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
