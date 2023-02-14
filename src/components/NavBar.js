@@ -117,10 +117,12 @@ const Navbar = () => {
               <MdAirplaneTicket size={25} className="mr-4" />{" "}
               <Link to="/flights">Flights</Link>
             </li>
-            <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
-              <MdHelp size={25} className="mr-4" />{" "}
-              <Link to="/admin">Admin</Link>
-            </li>
+            {user && user.email === "admin@gmail.com" && (
+              <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
+                <MdHelp size={25} className="mr-4" />{" "}
+                <Link to="/admin">Admin</Link>
+              </li>
+            )}
             <li className="text-xl py-4 flex" onClick={() => setNav(!nav)}>
               <FaCloudSun size={25} className="mr-4" />
               <Link to="/weather">Weather </Link>
