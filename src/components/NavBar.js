@@ -117,7 +117,7 @@ const Navbar = () => {
               <MdAirplaneTicket size={25} className="mr-4" />{" "}
               <Link to="/flights">Flights</Link>
             </li>
-            {user && user.email === "admin@gmail.com" && (
+            {user && user.email === "admin1@gmail.com" && (
               <li onClick={() => setNav(!nav)} className="text-xl py-4 flex">
                 <MdHelp size={25} className="mr-4" />{" "}
                 <Link to="/admin">Admin</Link>

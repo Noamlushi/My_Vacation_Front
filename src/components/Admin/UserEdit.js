@@ -44,7 +44,7 @@ export default function UserEdit() {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Role
+                      Amount spent
                     </th>
                     <th scope="col" className="relative px-6 py-3">
                       <span className="sr-only">Edit</span>
@@ -93,20 +93,19 @@ export default function UserEdit() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {userdata.role}
                       </td>
-                      <td className="px-1 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      {/* <td className="px-1 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a
                           className="text-indigo-600 hover:text-indigo-900"
                           href="UserEdit"
                         >
                           Edit
-                          {/* <a href="UserEdit">Edit</a> */}
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a href="#" className="text-red-600 hover:text-red-900">
                           <FaTrashAlt size={15} className="" />
                         </a>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -114,6 +113,23 @@ export default function UserEdit() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="  container mx-auto w-5/6 md:w-2/3 h-full">
+        {/* Code block starts */}
+        <div className="mt-8 bg-white dark:bg-gray-800 py-4 flex flex-col sm:flex-rowt sm:items-center justify-between px-5 sm:px-10 shadow rounded-t">
+          <div className="flex items-center mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0">
+            <div className="ml-2">
+              <h2 className=" text-stone-700 dark:text-gray-100 text-xl  font-bold">
+                Total Profit:
+              </h2>
+              <h2 className=" text-center text-blue-700 dark:text-gray-100 text-xl  font-bold">
+                200$
+              </h2>
+            </div>
+          </div>
+          <div></div>
+        </div>
+        {/* Code block ends */}
       </div>
     </div>
   );

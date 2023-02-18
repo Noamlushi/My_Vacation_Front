@@ -49,6 +49,7 @@ const Heroi = () => {
                     <a
                       className=" font-bold underline hover:text-blue-600 "
                       href={att.url}
+                      target="_blank"
                     >
                       {att.attraction}
                     </a>

@@ -63,7 +63,7 @@ function Table() {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Role
+                      Amount spent
                     </th>
                     <th scope="col" className="relative px-6 py-3">
                       <span className="sr-only">Edit</span>
@@ -116,11 +116,11 @@ function Table() {
                           <a href="UserEdit">Edit</a>
                         </a>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      {/* <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a href="#" className="text-red-600 hover:text-red-900">
                           <FaTrashAlt size={15} className="" />
                         </a>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
