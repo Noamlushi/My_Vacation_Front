@@ -3,14 +3,33 @@ import { FaTrashAlt } from "react-icons/fa";
 
 export default function UserEdit() {
   const [data, setData] = useState([]);
+  const [totalProfit, setTotalProfit] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:8000/allUsers")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
+        setTotalProfit(salesum(data));
+        console.log(salesum(data));
       });
   }, []);
+
+  const salesum = (data) => {
+    var sum = 0;
+    console.log(sum);
+
+    for (var i = 0; i < data.length; i++) {
+      console.log(data[i].total);
+
+      sum += data[i].total;
+    }
+    console.log("sum");
+
+    console.log(sum);
+
+    return sum;
+  };
 
   // return data.map((userdata, index) => userdata.user.user.email);
   return (
@@ -26,7 +45,7 @@ export default function UserEdit() {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Name
+                      Mail
                     </th>
                     {/* <th
                     scope="col"
@@ -36,13 +55,13 @@ export default function UserEdit() {
                   </th> */}
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      PERMISSION
+                      Permission
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
                       Amount spent
                     </th>
@@ -64,9 +83,6 @@ export default function UserEdit() {
                             />
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              {userdata.name}
-                            </div>
                             <div className="text-sm text-gray-500">
                               {}
                               {userdata.user.user.email}
@@ -74,38 +90,30 @@ export default function UserEdit() {
                           </div>
                         </div>
                       </td>
-                      {/* <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
-                        {person.title}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {person.department}
-                      </div>
-                    </td> */}
+
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span
-                          className="px-2 inline-flex text-xs leading-5
+                        {userdata.user.user.email === "admin@gmail.com" && (
+                          <span
+                            className="px-2 inline-flex text-xs leading-5
                     font-semibold rounded-full bg-green-100 text-green-800"
-                        >
-                          Admin
-                        </span>
+                          >
+                            Admin
+                          </span>
+                        )}
+                        {userdata.user.user.email !== "admin@gmail.com" && (
+                          <span
+                            className="px-2 inline-flex text-xs leading-5
+                    font-semibold rounded-full bg-gray-200 text-gray-800"
+                          >
+                            Client
+                          </span>
+                        )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {userdata.role}
-                      </td>
-                      {/* <td className="px-1 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a
-                          className="text-indigo-600 hover:text-indigo-900"
-                          href="UserEdit"
-                        >
-                          Edit
-                        </a>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="#" className="text-red-600 hover:text-red-900">
-                          <FaTrashAlt size={15} className="" />
-                        </a>
-                      </td> */}
+                      {userdata.user.user.email !== "admin@gmail.com" && (
+                        <td className="px-6 py-4 whitespace-nowrap  text-blue-600 text-center  text-lg  font-bold">
+                          {userdata.total + "$"}
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
@@ -123,7 +131,7 @@ export default function UserEdit() {
                 Total Profit:
               </h2>
               <h2 className=" text-center text-blue-700 dark:text-gray-100 text-xl  font-bold">
-                200$
+                {totalProfit && totalProfit + "$"}
               </h2>
             </div>
           </div>

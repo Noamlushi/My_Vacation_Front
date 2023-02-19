@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { CartItems } from "../../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserAuth } from "../../contexts/AuthContext";
+
 export default function CheckOut() {
   const { setcartItems, cartItems, total, setTotal } = CartItems();
+  const { user } = UserAuth();
   const navigate = useNavigate();
   return (
     <div className="overflow-y-hidden">
@@ -54,13 +57,14 @@ export default function CheckOut() {
             <button
               onClick={() => {
                 axios
-                  .post(
-                    "http://localhost:8000/updateSales",
-                    cartItems.map((item, index) => ({
+                  .post("http://localhost:8000/updateSales", {
+                    sales: cartItems.map((item, index) => ({
                       continent: item.continent,
                       q: item.q,
-                    }))
-                  )
+                    })),
+                    email: user.email,
+                    total: localStorage.getItem("total"),
+                  })
                   .then((response) => {
                     // console.log(JSON.stringify(response.data));
 
