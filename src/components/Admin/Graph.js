@@ -1,18 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
 function Graph(props) {
-  const [flightData, setflightData] = useState(props.data);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/flight")
-      .then((response) => response.json())
-      .then((data) => {
-        setflightData(data);
-      });
-  }, []);
-
   ChartJS.register(ArcElement, Tooltip, Legend);
   const data = {
     labels: [
@@ -54,35 +44,25 @@ function Graph(props) {
     ],
   };
 
-  function groupFlightsByContinent(flights) {
-    return flights.reduce((acc, flight) => {
-      const continent = flight.category;
-      if (!acc[continent]) {
-        acc[continent] = [];
-      }
-      acc[continent].push(flight);
-      return acc;
-    }, {});
-  }
-
   return (
-    <div className="absolute w-full h-full  max-h-[800px]  flex  justify-center my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <Pie
-        data={data}
-        options={{
-          title: {
-            display: true,
-            text: "Average Rainfall per month",
-            fontSize: 20,
-            responsive: true,
-            maintainAspectRatio: false,
-          },
-          legend: {
-            display: false,
-          },
-        }}
-      />
-      {flightData && console.log(groupFlightsByContinent(flightData))}
+    <div>
+      <div className="absolute w-full h-full  max-h-[800px]  flex  justify-center my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <Pie
+          data={data}
+          options={{
+            title: {
+              display: true,
+              text: "Average Rainfall per month",
+              fontSize: 20,
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+            legend: {
+              display: false,
+            },
+          }}
+        />
+      </div>
     </div>
   );
 }

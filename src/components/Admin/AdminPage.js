@@ -2,13 +2,14 @@
 
 import { GiWorld } from "react-icons/gi";
 import { FiEdit } from "react-icons/fi";
-import { FaUserCog } from "react-icons/fa";
+import { FaUserCog, FaPassport } from "react-icons/fa";
 import { VscGraph } from "react-icons/vsc";
 import React, { useState } from "react";
 import AboutCard from "./AboutCard";
 import AddDesti from "./AddDesti";
 import Graph from "./Graph";
 import UserEdit from "./UserEdit";
+import InventoryByContinents from "./InventoryByContinents";
 import FlightUpdate from "./FlightUpdate";
 import SocketIO from "../../SocketIO";
 import { Socket } from "../../contexts/SocketContext";
@@ -35,7 +36,7 @@ function AdminPage() {
             </h1>
 
             {/* Card Container */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* Card */}
               <div
                 onClick={() => {
@@ -64,7 +65,10 @@ function AdminPage() {
                   setcontent(<UserEdit />);
                 }}
               >
-                <AboutCard icon={<FaUserCog size={40} />} heading="User Edit" />
+                <AboutCard
+                  icon={<FaUserCog size={40} />}
+                  heading="User Edit  "
+                />
               </div>
 
               <div
@@ -82,6 +86,16 @@ function AdminPage() {
                 // }}
               >
                 <AboutCard icon={<VscGraph size={40} />} heading="statistics" />
+              </div>
+              <div
+                onClick={() => {
+                  setcontent(<InventoryByContinents />);
+                }}
+              >
+                <AboutCard
+                  icon={<FaPassport size={40} />}
+                  heading="Inventory By Continents"
+                />
               </div>
             </div>
           </div>
