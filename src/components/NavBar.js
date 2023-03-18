@@ -80,7 +80,7 @@ const Navbar = () => {
           </button>
         )}
 
-        {user && <Cart />}
+        {user && user.email != "admin@gmail.com" && <Cart />}
       </div>
 
       {/* Mobile Menu */}
