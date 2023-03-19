@@ -8,6 +8,19 @@ export default function CheckOut() {
   const { setcartItems, cartItems, total, setTotal } = CartItems();
   const { user } = UserAuth();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    FirstName: "",
+    LastName: "",
+    Address: "",
+    Phone: "",
+  });
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div className="overflow-y-hidden">
       <div className="flex justify-center items-center 2xl:container 2xl:mx-auto lg:py-16 md:py-12 py-9 px-4 md:px-6 lg:px-20 xl:px-44 ">
@@ -33,22 +46,34 @@ export default function CheckOut() {
             </div>
             <div className="mt-8 flex flex-col justify-start items-start w-full space-y-8 ">
               <input
+                value={formData.FirstName}
+                name="FirstName"
+                onChange={handleChange}
                 className="px-2 focus:outline-none focus:ring-2 focus:ring-blue-600 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                 type="text"
                 placeholder="First Name"
               />
               <input
+                value={formData.LastName}
+                name="LastName"
+                onChange={handleChange}
                 className="px-2 focus:outline-none focus:ring-2 focus:ring-blue-600 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                 type="text"
                 placeholder="Last Name"
               />
               <input
+                value={formData.Address}
+                name="Address"
+                onChange={handleChange}
                 className="px-2 focus:outline-none focus:ring-2 focus:ring-blue-600 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                 type="text"
                 placeholder="Address"
               />
 
               <input
+                value={formData.Phone}
+                name="Phone"
+                onChange={handleChange}
                 className="focus:outline-none focus:ring-2 focus:ring-blue-600 border-b px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4   w-full"
                 type="text"
                 placeholder="Phone Number"
@@ -66,13 +91,22 @@ export default function CheckOut() {
                     total: localStorage.getItem("total"),
                   })
                   .then((response) => {
-                    // console.log(JSON.stringify(response.data));
-
-                    localStorage.setItem("cart", JSON.stringify([]));
-                    setcartItems([]);
-                    localStorage.setItem("total", 0);
-                    setTotal(0);
-                    navigate("/");
+                    axios
+                      .post("http://localhost:8000/creatOrder", {
+                        FirstName: formData.FirstName,
+                        LastName: formData.LastName,
+                        Address: formData.Address,
+                        Phone: formData.Phone,
+                        Total: total,
+                      })
+                      .then((response) => {
+                        // console.log(JSON.stringify(response.data));
+                        localStorage.setItem("cart", JSON.stringify([]));
+                        setcartItems([]);
+                        localStorage.setItem("total", 0);
+                        setTotal(0);
+                        navigate("/");
+                      });
                   });
               }}
               className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-blue-600 py-4 w-full md:w-4/12 lg:w-full text-white bg-stone-700"
