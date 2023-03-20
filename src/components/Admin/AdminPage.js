@@ -2,11 +2,13 @@
 
 import { GiWorld } from "react-icons/gi";
 import { FiEdit } from "react-icons/fi";
+import { BsCartCheckFill } from "react-icons/bs";
 import { FaUserCog, FaPassport } from "react-icons/fa";
 import { VscGraph } from "react-icons/vsc";
 import React, { useState } from "react";
 import AboutCard from "./AboutCard";
 import AddDesti from "./AddDesti";
+import OrderSummary from "./OrderSummary";
 import Graph from "./Graph";
 import UserEdit from "./UserEdit";
 import InventoryByContinents from "./InventoryByContinents";
@@ -95,6 +97,16 @@ function AdminPage() {
                 <AboutCard
                   icon={<FaPassport size={40} />}
                   heading="Inventory By Continents"
+                />
+              </div>
+              <div
+                onClick={() => {
+                  setcontent(<OrderSummary />);
+                }}
+              >
+                <AboutCard
+                  icon={<BsCartCheckFill size={40} />}
+                  heading="Orders Summary"
                 />
               </div>
             </div>
