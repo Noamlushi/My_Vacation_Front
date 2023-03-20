@@ -92,7 +92,7 @@ export default function CheckOut() {
                   })
                   .then((response) => {
                     axios
-                      .post("http://localhost:8000/creatOrder", {
+                      .post("http://localhost:8000/order/creatOrder", {
                         FirstName: formData.FirstName,
                         LastName: formData.LastName,
                         Address: formData.Address,

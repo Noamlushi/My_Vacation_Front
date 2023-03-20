@@ -3,7 +3,7 @@ function OrderSummary() {
   const [orderData, setorderData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/allOrders")
+    fetch("http://localhost:8000/order/allOrders")
       .then((response) => response.json())
       .then((data) => {
         setorderData(data);

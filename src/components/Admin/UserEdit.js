@@ -6,7 +6,7 @@ export default function UserEdit() {
   const [totalProfit, setTotalProfit] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:8000/allUsers")
+    fetch("http://localhost:8000/user/allUsers")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
